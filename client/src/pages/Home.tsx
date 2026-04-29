@@ -103,30 +103,44 @@ function Logo() {
   );
 }
 
-function loadScript(url: string, cb: () => void) {
-  const existing = document.querySelector(`script[src="${url}"]`);
-  if (existing) {
-    cb();
-    return;
-  }
-  const s = document.createElement("script");
-  s.type = "text/javascript";
-  s.async = true;
-  s.src = url;
-  s.onload = cb;
-  document.head.appendChild(s);
+// Load Vidalytics library once, then init all embeds
+let vidalyticsReady: Promise<void> | null = null;
+
+function ensureVidalyticsLoaded(accountId: string, firstEmbedId: string): Promise<void> {
+  if (vidalyticsReady) return vidalyticsReady;
+
+  vidalyticsReady = new Promise((resolve) => {
+    const w = window as any;
+    if (!w.Vidalytics) w.Vidalytics = {};
+    if (!w.VidalyticsL) w.VidalyticsL = {};
+    if (!w._vidalytics) w._vidalytics = {};
+
+    const baseUrl = `https://fast.vidalytics.com/embeds/${accountId}/${firstEmbedId}/`;
+    const s = document.createElement("script");
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = baseUrl + "loader.min.js";
+    s.onload = () => {
+      const LoaderClass = w.VidalyticsL?.Loader;
+      if (LoaderClass) {
+        const loader = new LoaderClass();
+        loader.loadScript(baseUrl + "player.min.js", () => resolve());
+      }
+    };
+    document.head.appendChild(s);
+  });
+
+  return vidalyticsReady;
 }
 
 function VidalyticsEmbed({ embedId, accountId }: { embedId: string; accountId: string }) {
   const divId = `vidalytics_embed_${embedId}`;
-  const baseUrl = `https://quick.vidalytics.com/embeds/${accountId}/${embedId}/`;
   const containerRef = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     const el = containerRef.current;
     if (!el) return;
-
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -134,7 +148,7 @@ function VidalyticsEmbed({ embedId, accountId }: { embedId: string; accountId: s
           observer.disconnect();
         }
       },
-      { rootMargin: "200px" },
+      { rootMargin: "400px" },
     );
     observer.observe(el);
     return () => observer.disconnect();
@@ -143,25 +157,15 @@ function VidalyticsEmbed({ embedId, accountId }: { embedId: string; accountId: s
   useEffect(() => {
     if (!visible) return;
 
-    const w = window as any;
-    if (!w.Vidalytics) w.Vidalytics = {};
-    if (!w.VidalyticsL) w.VidalyticsL = {};
-    if (!w._vidalytics) w._vidalytics = {};
-
-    loadScript(baseUrl + "loader.min.js", () => {
-      const LoaderClass = w.VidalyticsL?.Loader;
-      if (LoaderClass) {
-        const loader = new LoaderClass();
-        loader.loadScript(baseUrl + "player.min.js", () => {
-          const EmbedClass = w.Vidalytics?.Embed;
-          if (EmbedClass) {
-            const embed = new EmbedClass();
-            embed.run(divId);
-          }
-        });
+    ensureVidalyticsLoaded(accountId, faqVideos[0]).then(() => {
+      const w = window as any;
+      const EmbedClass = w.Vidalytics?.Embed;
+      if (EmbedClass) {
+        const embed = new EmbedClass();
+        embed.run(divId);
       }
     });
-  }, [visible, baseUrl, divId]);
+  }, [visible, accountId, divId]);
 
   return (
     <div className="overflow-hidden rounded-lg border-4 border-yellow-500" ref={containerRef}>
