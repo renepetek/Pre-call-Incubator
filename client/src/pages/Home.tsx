@@ -1,6 +1,7 @@
 /*
 Design philosophy: Exact replica of the Client Ascension precall page structure, with KST Marketing gold branding replacing red accents. Maintains the original layout, typography hierarchy, video frame styling, FAQ grid, case studies, and proof section—but uses gold/yellow (#EAB308) instead of red (#DC2626).
 */
+import { useEffect, useRef } from "react";
 import { Play, ExternalLink } from "lucide-react";
 
 const HERO_THUMB = "https://d2xsxph8kpxj0f.cloudfront.net/310519663612998084/bzRRo8PuWrPWmxD9Qqyapo/precall-hero-ai-workflows-6b784JMa5H6cSzmSDomTs4.webp";
@@ -22,14 +23,7 @@ const VIDEO_LINKS = {
 };
 
 const faqVideos = [
-  { key: "mobinBreakdown", title: "How do I know which business model to run?" },
-  { key: "hassanAmmaBreakdown", title: "How long will it take to sign my first client?" },
-  { key: "martaBreakdown", title: "How many hours per day will this take?" },
-  { key: "sajib", title: "How much revenue can I make doing this?" },
-  { key: "fatima", title: "What if I don't get any results?" },
-  { key: "mobin", title: "What is the guarantee?" },
-  { key: "kazi", title: "Our actual refund & dispute rates" },
-  { key: "hergis", title: "I've never sold anything. Will that hold me back?" },
+  { embedId: "tzAPcWInNVOqL6WR", accountId: "HjA51wM6" },
 ] as const;
 
 const caseStudies = [
@@ -97,6 +91,63 @@ function Logo() {
       <span className="font-display text-xl font-black uppercase tracking-[0.16em] text-black sm:text-2xl">
         KST <span className="text-yellow-500">Marketing</span>
       </span>
+    </div>
+  );
+}
+
+function VidalyticsEmbed({ embedId, accountId }: { embedId: string; accountId: string }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const w = window as any;
+    const key = '_vidalytics';
+    if (!w[key]) w[key] = {};
+    if (!w[key].embeds) w[key].embeds = {};
+
+    const script = document.createElement("script");
+    script.src = `https://fast.vidalytics.com/embeds/${accountId}/${embedId}/player.settings.json?ac=${Date.now()}`;
+    script.onload = undefined;
+
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", `https://fast.vidalytics.com/embeds/${accountId}/${embedId}/player.settings.json?ac=${Date.now()}`, true);
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === 4 && (xhr.status === 200 || xhr.status === 304)) {
+        const sd = JSON.parse(xhr.responseText);
+        w[key].embeds[embedId] = { type: "video", options: sd };
+        const tryEmbed = () => {
+          if (w.Vidalytics && w.Vidalytics.Embed) {
+            const embed = new w.Vidalytics.Embed();
+            embed.run(embedId);
+            embed.loadCss();
+          } else {
+            setTimeout(tryEmbed, 1000);
+          }
+        };
+        tryEmbed();
+      }
+    };
+    xhr.send();
+
+    // Load main Vidalytics script if not already loaded
+    if (!document.querySelector('script[src*="vidalytics.com/uploads/scripts"]')) {
+      const mainScript = document.createElement("script");
+      mainScript.src = "https://fast.vidalytics.com/uploads/scripts/embed.js";
+      document.head.appendChild(mainScript);
+    }
+
+    return () => {
+      // Cleanup
+      delete w[key]?.embeds?.[embedId];
+    };
+  }, [embedId, accountId]);
+
+  return (
+    <div className="overflow-hidden rounded-lg border-4 border-yellow-500">
+      <div
+        id={embedId}
+        ref={containerRef}
+        style={{ width: "100%", position: "relative", paddingTop: "56.25%" }}
+      />
     </div>
   );
 }
@@ -176,13 +227,8 @@ export default function Home() {
 
             <div className="mt-10 grid gap-5 md:grid-cols-2">
               {faqVideos.map((item) => (
-                <div key={item.key} className="group">
-                  <VideoFrame
-                    title={item.title}
-                    src={VIDEO_LINKS[item.key]}
-                    thumbnail={FAQ_THUMB}
-                  />
-                  <h3 className="mt-4 font-display text-lg font-black uppercase text-black">{item.title}</h3>
+                <div key={item.embedId}>
+                  <VidalyticsEmbed embedId={item.embedId} accountId={item.accountId} />
                 </div>
               ))}
             </div>
