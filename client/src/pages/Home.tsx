@@ -96,29 +96,35 @@ function Logo() {
 }
 
 function VidalyticsEmbed({ embedId, accountId }: { embedId: string; accountId: string }) {
-  const wrapperRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
-    const container = wrapperRef.current;
-    if (!container) return;
+    const w = window as any;
+    if (!w._vidalytics) w._vidalytics = {};
+    if (!w._vidalytics.embeds) w._vidalytics.embeds = {};
 
-    container.innerHTML = `<div id="${embedId}" style="width:100%;position:relative;padding-top:56.25%"></div>`;
+    const settingsUrl = `https://fast.vidalytics.com/embeds/${accountId}/${embedId}/player.settings.json?ac=${Date.now()}`;
 
-    const script = document.createElement("script");
-    script.type = "text/javascript";
-    script.textContent = `
-      (function(v,i,d,a,l,y,t,c,s){
-        y='_'+d.toLowerCase();if(!v[y]){v[y]={}}if(!v[y].embeds){v[y].embeds={}}
-        t=function(){if(v[d]&&v[d].Embed){var ve=v[d].Embed;c=new ve();c.run(a);c.loadCss();}else{setTimeout(t,1000)}};
-        s=new XMLHttpRequest();s.open("GET",l+'?ac='+(new Date()).getTime(),true);
-        s.onreadystatechange=function(){if(s.readyState==4){if((s.status==200||s.status==304)){var sd=JSON.parse(s.responseText);v[y].embeds[a]={type:"video",options:sd};t();}}};s.send();
-      })(window,document,'Vidalytics','${embedId}','https://fast.vidalytics.com/embeds/${accountId}/${embedId}/player.settings.json');
-    `;
-    container.appendChild(script);
+    const tryRun = () => {
+      if (w.Vidalytics?.Embed) {
+        const embed = new w.Vidalytics.Embed();
+        embed.run(embedId);
+        embed.loadCss();
+      } else {
+        setTimeout(tryRun, 500);
+      }
+    };
+
+    fetch(settingsUrl)
+      .then((r) => r.json())
+      .then((sd) => {
+        w._vidalytics.embeds[embedId] = { type: "video", options: sd };
+        tryRun();
+      });
   }, [embedId, accountId]);
 
   return (
-    <div className="overflow-hidden rounded-lg border-4 border-yellow-500" ref={wrapperRef} />
+    <div className="overflow-hidden rounded-lg border-4 border-yellow-500">
+      <div id={embedId} style={{ width: "100%", position: "relative", paddingTop: "56.25%" }} />
+    </div>
   );
 }
 
