@@ -248,8 +248,8 @@ export default function Home() {
             <div className="mx-auto mt-5 h-1.5 w-32 bg-yellow-500" />
 
             <div className="mt-10 grid gap-5 md:grid-cols-2">
-              {faqVideos.map((embedId) => (
-                <div key={embedId}>
+              {faqVideos.map((embedId, i) => (
+                <div key={embedId} className={faqVideos.length % 2 !== 0 && i === faqVideos.length - 1 ? "md:col-span-2 md:mx-auto md:w-1/2" : ""}>
                   <VidalyticsEmbed embedId={embedId} accountId={VIDALYTICS_ACCOUNT} />
                 </div>
               ))}
