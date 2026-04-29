@@ -34,6 +34,61 @@ const faqVideos = [
   "JeyRGtPS7NKzvg7_",
 ] as const;
 
+const TESTIMONIAL_IMAGES = [
+  "/testimonials/t-039.png", "/testimonials/t-153.jpg", "/testimonials/t-048.png",
+  "/testimonials/t-103.png", "/testimonials/t-130.png", "/testimonials/t-016.png",
+  "/testimonials/t-040.png", "/testimonials/t-098.png", "/testimonials/t-018.png",
+  "/testimonials/t-056.png", "/testimonials/t-063.png", "/testimonials/t-135.png",
+  "/testimonials/t-077.png", "/testimonials/t-013.png", "/testimonials/t-046.png",
+  "/testimonials/t-044.png", "/testimonials/t-045.png", "/testimonials/t-107.png",
+  "/testimonials/t-055.png", "/testimonials/t-079.png", "/testimonials/t-122.png",
+  "/testimonials/t-121.png", "/testimonials/t-115.png", "/testimonials/t-144.png",
+  "/testimonials/t-036.png", "/testimonials/t-149.png", "/testimonials/t-091.png",
+  "/testimonials/t-136.png", "/testimonials/t-124.png", "/testimonials/t-110.png",
+  "/testimonials/t-082.png", "/testimonials/t-131.png", "/testimonials/t-125.png",
+  "/testimonials/t-012.png", "/testimonials/t-033.png", "/testimonials/t-022.png",
+  "/testimonials/t-117.png", "/testimonials/t-068.png", "/testimonials/t-020.png",
+  "/testimonials/t-119.png", "/testimonials/t-006.png", "/testimonials/t-051.png",
+  "/testimonials/t-147.png", "/testimonials/t-118.png", "/testimonials/t-004.png",
+  "/testimonials/t-094.png", "/testimonials/t-109.png", "/testimonials/t-127.png",
+  "/testimonials/t-152.jpg", "/testimonials/t-128.png", "/testimonials/t-067.png",
+  "/testimonials/t-093.png", "/testimonials/t-009.png", "/testimonials/t-104.png",
+  "/testimonials/t-086.png", "/testimonials/t-141.png", "/testimonials/t-031.png",
+  "/testimonials/t-047.png", "/testimonials/t-058.png", "/testimonials/t-105.png",
+  "/testimonials/t-102.png", "/testimonials/t-116.png", "/testimonials/t-081.png",
+  "/testimonials/t-078.png", "/testimonials/t-014.png", "/testimonials/t-062.png",
+  "/testimonials/t-083.png", "/testimonials/t-148.png", "/testimonials/t-023.png",
+  "/testimonials/t-035.png", "/testimonials/t-041.png", "/testimonials/t-090.png",
+  "/testimonials/t-034.png", "/testimonials/t-003.png", "/testimonials/t-008.png",
+  "/testimonials/t-139.png", "/testimonials/t-123.png", "/testimonials/t-028.png",
+  "/testimonials/t-053.png", "/testimonials/t-050.png", "/testimonials/t-143.png",
+  "/testimonials/t-113.png", "/testimonials/t-011.png", "/testimonials/t-106.png",
+  "/testimonials/t-007.png", "/testimonials/t-017.png", "/testimonials/t-064.png",
+  "/testimonials/t-134.png", "/testimonials/t-137.png", "/testimonials/t-076.png",
+  "/testimonials/t-070.png", "/testimonials/t-037.png", "/testimonials/t-140.png",
+  "/testimonials/t-005.png", "/testimonials/t-021.png", "/testimonials/t-100.png",
+  "/testimonials/t-112.png", "/testimonials/t-060.png", "/testimonials/t-027.png",
+  "/testimonials/t-151.png", "/testimonials/t-101.png", "/testimonials/t-097.png",
+  "/testimonials/t-059.png", "/testimonials/t-026.jpg", "/testimonials/t-072.png",
+  "/testimonials/t-088.png", "/testimonials/t-001.png", "/testimonials/t-080.png",
+  "/testimonials/t-145.png", "/testimonials/t-085.png", "/testimonials/t-071.png",
+  "/testimonials/t-057.png", "/testimonials/t-074.png", "/testimonials/t-087.png",
+  "/testimonials/t-069.png", "/testimonials/t-073.png", "/testimonials/t-133.png",
+  "/testimonials/t-084.png", "/testimonials/t-054.png", "/testimonials/t-095.png",
+  "/testimonials/t-146.png", "/testimonials/t-138.png", "/testimonials/t-120.png",
+  "/testimonials/t-154.png", "/testimonials/t-025.png", "/testimonials/t-108.png",
+  "/testimonials/t-089.png", "/testimonials/t-032.png", "/testimonials/t-029.png",
+  "/testimonials/t-015.png", "/testimonials/t-150.png", "/testimonials/t-043.png",
+  "/testimonials/t-030.png", "/testimonials/t-111.png", "/testimonials/t-066.png",
+  "/testimonials/t-038.png", "/testimonials/t-142.png", "/testimonials/t-024.png",
+  "/testimonials/t-096.png", "/testimonials/t-092.png", "/testimonials/t-049.png",
+  "/testimonials/t-010.png", "/testimonials/t-002.png", "/testimonials/t-129.png",
+  "/testimonials/t-042.png", "/testimonials/t-052.png", "/testimonials/t-099.png",
+  "/testimonials/t-132.png", "/testimonials/t-126.png", "/testimonials/t-065.png",
+  "/testimonials/t-114.png", "/testimonials/t-019.png", "/testimonials/t-075.png",
+  "/testimonials/t-061.png",
+];
+
 const caseStudies = [
   {
     key: "sajib",
@@ -301,23 +356,15 @@ export default function Home() {
             </h2>
             <div className="mx-auto mt-6 h-1.5 w-48 bg-yellow-500" />
 
-            <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {[
-                { name: "Student 1", role: "Testimonial", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop" },
-                { name: "Student 2", role: "Testimonial", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop" },
-                { name: "Student 3", role: "Testimonial", image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop" },
-                { name: "Student 4", role: "Testimonial", image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop" },
-                { name: "Student 5", role: "Testimonial", image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop" },
-                { name: "Student 6", role: "Testimonial", image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop" },
-              ].map((testimonial) => (
-                <div key={testimonial.name} className="rounded-lg overflow-hidden bg-white border-4 border-zinc-200 shadow-lg">
-                  <img src={testimonial.image} alt={testimonial.name} className="h-64 w-full object-cover" />
-                  <div className="p-6">
-                    <h3 className="font-display text-lg font-black uppercase text-black">{testimonial.name}</h3>
-                    <p className="mt-2 text-sm text-zinc-600">{testimonial.role}</p>
-                    <p className="mt-4 text-zinc-700">Add your testimonial text here.</p>
-                  </div>
-                </div>
+            <div className="mt-12 columns-1 gap-4 sm:columns-2 lg:columns-3">
+              {TESTIMONIAL_IMAGES.map((src) => (
+                <img
+                  key={src}
+                  src={src}
+                  alt="Student testimonial"
+                  className="mb-4 w-full rounded-lg border border-zinc-200 shadow-sm"
+                  loading="lazy"
+                />
               ))}
             </div>
           </div>
