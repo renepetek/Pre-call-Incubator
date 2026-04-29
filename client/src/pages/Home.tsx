@@ -139,26 +139,25 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white text-black">
       {/* Hero Section */}
-      <header className="border-b border-zinc-200 px-5 py-16 sm:px-8 sm:py-20">
-        <div className="mx-auto max-w-5xl text-center">
-          <div className="font-display text-2xl font-black uppercase tracking-[0.16em] text-yellow-500 sm:text-3xl border-b-2 border-yellow-500 pb-2 inline-block">
-            Important Next Steps Below
-          </div>
+      <header className="border-b border-zinc-200 px-5 py-10 sm:px-8 sm:py-14">
+        <div className="mx-auto max-w-3xl text-center">
+          <Logo />
 
-          <div className="mt-8 flex justify-center">
+          <div className="mt-5 flex justify-center">
             <div className="inline-flex items-center gap-2 text-sm font-black uppercase tracking-wide text-emerald-600">
               <span className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
               Your meeting is scheduled
             </div>
           </div>
 
-          <h1 className="mx-auto mt-6 max-w-4xl font-display text-4xl font-black uppercase leading-[0.95] tracking-tight text-black sm:text-6xl md:text-7xl">
-            Watch the video below in full before moving on to the rest of the page
+          <h1 className="mx-auto mt-4 max-w-2xl font-display text-3xl font-black uppercase leading-[1] tracking-tight text-black sm:text-4xl md:text-5xl">
+            Watch the video below in full before moving on to the rest of the page{" "}
+            <span className="inline-block">👇</span>
           </h1>
 
-          <div className="mx-auto mt-8 h-1.5 w-48 bg-yellow-500" />
+          <div className="mx-auto mt-6 h-1.5 w-32 bg-yellow-500" />
 
-          <div className="mx-auto mt-8 max-w-3xl rounded-lg border-4 border-yellow-500 overflow-hidden">
+          <div className="mx-auto mt-6 max-w-2xl overflow-hidden">
             <VideoFrame title="KST Marketing Program" src={VIDEO_LINKS.main} thumbnail={HERO_THUMB} />
           </div>
         </div>
@@ -166,14 +165,14 @@ export default function Home() {
 
       <main>
         {/* FAQ Section */}
-        <section className="bg-zinc-100 px-5 py-16 sm:px-8 sm:py-20">
+        <section className="bg-zinc-100 px-5 py-12 sm:px-8 sm:py-14">
           <div className="mx-auto max-w-6xl">
-            <h2 className="font-display text-4xl font-black uppercase leading-none tracking-tight text-black sm:text-5xl md:text-6xl text-center">
+            <h2 className="font-display text-3xl font-black uppercase leading-none tracking-tight text-black sm:text-4xl md:text-5xl text-center">
               Frequently Asked Questions
             </h2>
-            <div className="mx-auto mt-6 h-1.5 w-48 bg-yellow-500" />
+            <div className="mx-auto mt-5 h-1.5 w-32 bg-yellow-500" />
 
-            <div className="mt-12 grid gap-5 md:grid-cols-2">
+            <div className="mt-10 grid gap-5 md:grid-cols-2">
               {faqVideos.map((item) => (
                 <div key={item.key} className="group">
                   <VideoFrame
