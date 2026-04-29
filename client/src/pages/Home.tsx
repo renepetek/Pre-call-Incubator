@@ -141,7 +141,9 @@ export default function Home() {
       {/* Hero Section */}
       <header className="border-b border-zinc-200 px-5 py-10 sm:px-8 sm:py-14">
         <div className="mx-auto max-w-3xl text-center">
-          <Logo />
+          <div className="font-display text-xl font-black uppercase tracking-[0.16em] text-yellow-500 sm:text-2xl border-b-2 border-yellow-500 pb-2 inline-block">
+            Important Next Steps Below
+          </div>
 
           <div className="mt-5 flex justify-center">
             <div className="inline-flex items-center gap-2 text-sm font-black uppercase tracking-wide text-emerald-600">
