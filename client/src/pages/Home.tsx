@@ -1,7 +1,7 @@
 /*
 Design philosophy: Exact replica of the Client Ascension precall page structure, with KST Marketing gold branding replacing red accents. Maintains the original layout, typography hierarchy, video frame styling, FAQ grid, case studies, and proof section—but uses gold/yellow (#EAB308) instead of red (#DC2626).
 */
-import { useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Play } from "lucide-react";
 
 const HERO_THUMB = "https://d2xsxph8kpxj0f.cloudfront.net/310519663612998084/bzRRo8PuWrPWmxD9Qqyapo/precall-hero-ai-workflows-6b784JMa5H6cSzmSDomTs4.webp";
@@ -120,8 +120,29 @@ function loadScript(url: string, cb: () => void) {
 function VidalyticsEmbed({ embedId, accountId }: { embedId: string; accountId: string }) {
   const divId = `vidalytics_embed_${embedId}`;
   const baseUrl = `https://quick.vidalytics.com/embeds/${accountId}/${embedId}/`;
+  const containerRef = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "200px" },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!visible) return;
+
     const w = window as any;
     if (!w.Vidalytics) w.Vidalytics = {};
     if (!w.VidalyticsL) w.VidalyticsL = {};
@@ -140,10 +161,10 @@ function VidalyticsEmbed({ embedId, accountId }: { embedId: string; accountId: s
         });
       }
     });
-  }, [embedId, accountId, divId, baseUrl]);
+  }, [visible, baseUrl, divId]);
 
   return (
-    <div className="overflow-hidden rounded-lg border-4 border-yellow-500">
+    <div className="overflow-hidden rounded-lg border-4 border-yellow-500" ref={containerRef}>
       <div id={divId} style={{ width: "100%", position: "relative", paddingTop: "56.25%" }} />
     </div>
   );
