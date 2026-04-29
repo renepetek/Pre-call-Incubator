@@ -22,8 +22,16 @@ const VIDEO_LINKS = {
   martaBreakdown: "https://www.youtube.com/watch?v=fouYAJShOCM",
 };
 
+const VIDALYTICS_ACCOUNT = "HjA51wM6";
+
 const faqVideos = [
-  { embedId: "tzAPcWInNVOqL6WR", accountId: "HjA51wM6" },
+  "tzAPcWInNVOqL6WR",
+  "iqw7DUGpGdUjBwlM",
+  "UkH8uI0lQJE4pn8m",
+  "etwXnhzI_wfEmg8x",
+  "jFiS_uI2EmO37ZxI",
+  "q9CNciRaHtXL5CmZ",
+  "JeyRGtPS7NKzvg7_",
 ] as const;
 
 const caseStudies = [
@@ -95,6 +103,20 @@ function Logo() {
   );
 }
 
+function loadScript(url: string, cb: () => void) {
+  const existing = document.querySelector(`script[src="${url}"]`);
+  if (existing) {
+    cb();
+    return;
+  }
+  const s = document.createElement("script");
+  s.type = "text/javascript";
+  s.async = true;
+  s.src = url;
+  s.onload = cb;
+  document.head.appendChild(s);
+}
+
 function VidalyticsEmbed({ embedId, accountId }: { embedId: string; accountId: string }) {
   const divId = `vidalytics_embed_${embedId}`;
   const baseUrl = `https://quick.vidalytics.com/embeds/${accountId}/${embedId}/`;
@@ -104,15 +126,6 @@ function VidalyticsEmbed({ embedId, accountId }: { embedId: string; accountId: s
     if (!w.Vidalytics) w.Vidalytics = {};
     if (!w.VidalyticsL) w.VidalyticsL = {};
     if (!w._vidalytics) w._vidalytics = {};
-
-    function loadScript(url: string, cb: () => void) {
-      const s = document.createElement("script");
-      s.type = "text/javascript";
-      s.async = true;
-      s.src = url;
-      s.onload = cb;
-      document.head.appendChild(s);
-    }
 
     loadScript(baseUrl + "loader.min.js", () => {
       const LoaderClass = w.VidalyticsL?.Loader;
@@ -210,9 +223,9 @@ export default function Home() {
             <div className="mx-auto mt-5 h-1.5 w-32 bg-yellow-500" />
 
             <div className="mt-10 grid gap-5 md:grid-cols-2">
-              {faqVideos.map((item) => (
-                <div key={item.embedId}>
-                  <VidalyticsEmbed embedId={item.embedId} accountId={item.accountId} />
+              {faqVideos.map((embedId) => (
+                <div key={embedId}>
+                  <VidalyticsEmbed embedId={embedId} accountId={VIDALYTICS_ACCOUNT} />
                 </div>
               ))}
             </div>
