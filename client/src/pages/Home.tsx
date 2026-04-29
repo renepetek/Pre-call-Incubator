@@ -96,7 +96,8 @@ function Logo() {
 
 function VidalyticsEmbed({ embedId, accountId }: { embedId: string; accountId: string }) {
   const html = `<!DOCTYPE html>
-<html><head><meta charset="utf-8"><style>*{margin:0;padding:0}body{overflow:hidden}</style></head>
+<html><head><meta charset="utf-8"><style>*{margin:0;padding:0}body{overflow:hidden}</style>
+<script src="https://fast.vidalytics.com/uploads/scripts/embed.js"><\/script></head>
 <body>
 <div id="${embedId}" style="width:100%;position:relative;padding-top:56.25%"></div>
 <script type="text/javascript">
