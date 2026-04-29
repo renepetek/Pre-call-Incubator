@@ -1,6 +1,7 @@
 /*
 Design philosophy: Exact replica of the Client Ascension precall page structure, with KST Marketing gold branding replacing red accents. Maintains the original layout, typography hierarchy, video frame styling, FAQ grid, case studies, and proof section—but uses gold/yellow (#EAB308) instead of red (#DC2626).
 */
+import { useEffect, useRef, useState } from "react";
 import { Play } from "lucide-react";
 
 const HERO_THUMB = "https://d2xsxph8kpxj0f.cloudfront.net/310519663612998084/bzRRo8PuWrPWmxD9Qqyapo/precall-hero-ai-workflows-6b784JMa5H6cSzmSDomTs4.webp";
@@ -95,25 +96,38 @@ function Logo() {
 }
 
 function VidalyticsEmbed({ embedId, accountId }: { embedId: string; accountId: string }) {
-  const html = `<!DOCTYPE html>
-<html><head><meta charset="utf-8"><style>*{margin:0;padding:0}body{overflow:hidden}</style>
-<script src="https://fast.vidalytics.com/uploads/scripts/embed.js"><\/script></head>
-<body>
+  const [blobUrl, setBlobUrl] = useState<string | null>(null);
+
+  useEffect(() => {
+    const html = `<!DOCTYPE html>
+<html><head><meta charset="utf-8">
+<style>*{margin:0;padding:0;box-sizing:border-box}body{overflow:hidden}</style>
+</head><body>
 <div id="${embedId}" style="width:100%;position:relative;padding-top:56.25%"></div>
-<script type="text/javascript">
+<script>
 (function(v,i,d,a,l,y,t,c,s){
   y='_'+d.toLowerCase();if(!v[y]){v[y]={}}if(!v[y].embeds){v[y].embeds={}}
   t=function(){if(v[d]&&v[d].Embed){var ve=v[d].Embed;c=new ve();c.run(a);c.loadCss();}else{setTimeout(t,1000)}};
   s=new XMLHttpRequest();s.open("GET",l+'?ac='+(new Date()).getTime(),true);
   s.onreadystatechange=function(){if(s.readyState==4){if((s.status==200||s.status==304)){var sd=JSON.parse(s.responseText);v[y].embeds[a]={type:"video",options:sd};t();}}};s.send();
 })(window,document,'Vidalytics','${embedId}','https://fast.vidalytics.com/embeds/${accountId}/${embedId}/player.settings.json');
-<\/script>
+</script>
+<script src="https://fast.vidalytics.com/uploads/scripts/embed.js"></script>
 </body></html>`;
+
+    const blob = new Blob([html], { type: "text/html" });
+    const url = URL.createObjectURL(blob);
+    setBlobUrl(url);
+
+    return () => URL.revokeObjectURL(url);
+  }, [embedId, accountId]);
+
+  if (!blobUrl) return null;
 
   return (
     <div className="overflow-hidden rounded-lg border-4 border-yellow-500">
       <iframe
-        srcDoc={html}
+        src={blobUrl}
         className="w-full border-0"
         style={{ aspectRatio: "16/9" }}
         allow="autoplay; fullscreen"
