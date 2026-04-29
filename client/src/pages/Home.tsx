@@ -1,7 +1,7 @@
 /*
 Design philosophy: Exact replica of the Client Ascension precall page structure, with KST Marketing gold branding replacing red accents. Maintains the original layout, typography hierarchy, video frame styling, FAQ grid, case studies, and proof section—but uses gold/yellow (#EAB308) instead of red (#DC2626).
 */
-import { useEffect, useRef, useState } from "react";
+import { useEffect } from "react";
 import { Play } from "lucide-react";
 
 const HERO_THUMB = "https://d2xsxph8kpxj0f.cloudfront.net/310519663612998084/bzRRo8PuWrPWmxD9Qqyapo/precall-hero-ai-workflows-6b784JMa5H6cSzmSDomTs4.webp";
@@ -96,43 +96,42 @@ function Logo() {
 }
 
 function VidalyticsEmbed({ embedId, accountId }: { embedId: string; accountId: string }) {
-  const [blobUrl, setBlobUrl] = useState<string | null>(null);
+  const divId = `vidalytics_embed_${embedId}`;
+  const baseUrl = `https://quick.vidalytics.com/embeds/${accountId}/${embedId}/`;
 
   useEffect(() => {
-    const html = `<!DOCTYPE html>
-<html><head><meta charset="utf-8">
-<style>*{margin:0;padding:0;box-sizing:border-box}body{overflow:hidden}</style>
-</head><body>
-<div id="${embedId}" style="width:100%;position:relative;padding-top:56.25%"></div>
-<script>
-(function(v,i,d,a,l,y,t,c,s){
-  y='_'+d.toLowerCase();if(!v[y]){v[y]={}}if(!v[y].embeds){v[y].embeds={}}
-  t=function(){if(v[d]&&v[d].Embed){var ve=v[d].Embed;c=new ve();c.run(a);c.loadCss();}else{setTimeout(t,1000)}};
-  s=new XMLHttpRequest();s.open("GET",l+'?ac='+(new Date()).getTime(),true);
-  s.onreadystatechange=function(){if(s.readyState==4){if((s.status==200||s.status==304)){var sd=JSON.parse(s.responseText);v[y].embeds[a]={type:"video",options:sd};t();}}};s.send();
-})(window,document,'Vidalytics','${embedId}','https://fast.vidalytics.com/embeds/${accountId}/${embedId}/player.settings.json');
-</script>
-<script src="https://fast.vidalytics.com/uploads/scripts/embed.js"></script>
-</body></html>`;
+    const w = window as any;
+    if (!w.Vidalytics) w.Vidalytics = {};
+    if (!w.VidalyticsL) w.VidalyticsL = {};
+    if (!w._vidalytics) w._vidalytics = {};
 
-    const blob = new Blob([html], { type: "text/html" });
-    const url = URL.createObjectURL(blob);
-    setBlobUrl(url);
+    function loadScript(url: string, cb: () => void) {
+      const s = document.createElement("script");
+      s.type = "text/javascript";
+      s.async = true;
+      s.src = url;
+      s.onload = cb;
+      document.head.appendChild(s);
+    }
 
-    return () => URL.revokeObjectURL(url);
-  }, [embedId, accountId]);
-
-  if (!blobUrl) return null;
+    loadScript(baseUrl + "loader.min.js", () => {
+      const LoaderClass = w.VidalyticsL?.Loader;
+      if (LoaderClass) {
+        const loader = new LoaderClass();
+        loader.loadScript(baseUrl + "player.min.js", () => {
+          const EmbedClass = w.Vidalytics?.Embed;
+          if (EmbedClass) {
+            const embed = new EmbedClass();
+            embed.run(divId);
+          }
+        });
+      }
+    });
+  }, [embedId, accountId, divId, baseUrl]);
 
   return (
     <div className="overflow-hidden rounded-lg border-4 border-yellow-500">
-      <iframe
-        src={blobUrl}
-        className="w-full border-0"
-        style={{ aspectRatio: "16/9" }}
-        allow="autoplay; fullscreen"
-        allowFullScreen
-      />
+      <div id={divId} style={{ width: "100%", position: "relative", paddingTop: "56.25%" }} />
     </div>
   );
 }
