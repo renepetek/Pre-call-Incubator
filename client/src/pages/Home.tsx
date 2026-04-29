@@ -96,59 +96,29 @@ function Logo() {
 }
 
 function VidalyticsEmbed({ embedId, accountId }: { embedId: string; accountId: string }) {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const w = window as any;
-    const key = '_vidalytics';
-    if (!w[key]) w[key] = {};
-    if (!w[key].embeds) w[key].embeds = {};
+    const container = wrapperRef.current;
+    if (!container) return;
+
+    container.innerHTML = `<div id="${embedId}" style="width:100%;position:relative;padding-top:56.25%"></div>`;
 
     const script = document.createElement("script");
-    script.src = `https://fast.vidalytics.com/embeds/${accountId}/${embedId}/player.settings.json?ac=${Date.now()}`;
-    script.onload = undefined;
-
-    const xhr = new XMLHttpRequest();
-    xhr.open("GET", `https://fast.vidalytics.com/embeds/${accountId}/${embedId}/player.settings.json?ac=${Date.now()}`, true);
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === 4 && (xhr.status === 200 || xhr.status === 304)) {
-        const sd = JSON.parse(xhr.responseText);
-        w[key].embeds[embedId] = { type: "video", options: sd };
-        const tryEmbed = () => {
-          if (w.Vidalytics && w.Vidalytics.Embed) {
-            const embed = new w.Vidalytics.Embed();
-            embed.run(embedId);
-            embed.loadCss();
-          } else {
-            setTimeout(tryEmbed, 1000);
-          }
-        };
-        tryEmbed();
-      }
-    };
-    xhr.send();
-
-    // Load main Vidalytics script if not already loaded
-    if (!document.querySelector('script[src*="vidalytics.com/uploads/scripts"]')) {
-      const mainScript = document.createElement("script");
-      mainScript.src = "https://fast.vidalytics.com/uploads/scripts/embed.js";
-      document.head.appendChild(mainScript);
-    }
-
-    return () => {
-      // Cleanup
-      delete w[key]?.embeds?.[embedId];
-    };
+    script.type = "text/javascript";
+    script.textContent = `
+      (function(v,i,d,a,l,y,t,c,s){
+        y='_'+d.toLowerCase();if(!v[y]){v[y]={}}if(!v[y].embeds){v[y].embeds={}}
+        t=function(){if(v[d]&&v[d].Embed){var ve=v[d].Embed;c=new ve();c.run(a);c.loadCss();}else{setTimeout(t,1000)}};
+        s=new XMLHttpRequest();s.open("GET",l+'?ac='+(new Date()).getTime(),true);
+        s.onreadystatechange=function(){if(s.readyState==4){if((s.status==200||s.status==304)){var sd=JSON.parse(s.responseText);v[y].embeds[a]={type:"video",options:sd};t();}}};s.send();
+      })(window,document,'Vidalytics','${embedId}','https://fast.vidalytics.com/embeds/${accountId}/${embedId}/player.settings.json');
+    `;
+    container.appendChild(script);
   }, [embedId, accountId]);
 
   return (
-    <div className="overflow-hidden rounded-lg border-4 border-yellow-500">
-      <div
-        id={embedId}
-        ref={containerRef}
-        style={{ width: "100%", position: "relative", paddingTop: "56.25%" }}
-      />
-    </div>
+    <div className="overflow-hidden rounded-lg border-4 border-yellow-500" ref={wrapperRef} />
   );
 }
 
