@@ -157,7 +157,7 @@ function VidalyticsEmbed({ embedId, accountId }: { embedId: string; accountId: s
   useEffect(() => {
     if (!visible) return;
 
-    ensureVidalyticsLoaded(accountId, faqVideos[0]).then(() => {
+    ensureVidalyticsLoaded(accountId, "nZh3ZMAQKBFmQv7m").then(() => {
       const w = window as any;
       const EmbedClass = w.Vidalytics?.Embed;
       if (EmbedClass) {
@@ -233,7 +233,7 @@ export default function Home() {
           <div className="mx-auto mt-6 h-1.5 w-32 bg-yellow-500" />
 
           <div className="mx-auto mt-6 max-w-2xl overflow-hidden">
-            <VideoFrame title="KST Marketing Program" src={VIDEO_LINKS.main} thumbnail={HERO_THUMB} />
+            <VidalyticsEmbed embedId="nZh3ZMAQKBFmQv7m" accountId={VIDALYTICS_ACCOUNT} />
           </div>
         </div>
       </header>
