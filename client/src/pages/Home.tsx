@@ -263,6 +263,46 @@ function VideoFrame({
 }
 
 export default function Home() {
+  useEffect(() => {
+    const w = window as any;
+    const d = "Vidalytics";
+    const c = d + "L";
+    const y = "_" + d.toLowerCase();
+    if (!w[d]) w[d] = {};
+    if (!w[c]) w[c] = {};
+    if (!w[y]) w[y] = {};
+
+    const a = "vidalytics_embed_nZh3ZMAQKBFmQv7m";
+    const l = "https://fast.vidalytics.com/embeds/HjA51wM6/nZh3ZMAQKBFmQv7m/";
+
+    const vl = "Loader";
+    let vli = w[y][vl];
+    let vsl = w[c][vl + "Script"];
+
+    if (!vsl) {
+      vsl = function (u: string, cb: () => void) {
+        const s = document.createElement("script");
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = u;
+        s.onload = cb;
+        document.head.appendChild(s);
+      };
+    }
+
+    vsl(l + "loader.min.js", function () {
+      if (!vli) {
+        const vlc = w[c][vl];
+        vli = new vlc();
+      }
+      vli.loadScript(l + "player.min.js", function () {
+        const vec = w[d].Embed;
+        const t = new vec();
+        t.run(a);
+      });
+    });
+  }, []);
+
   return (
     <div className="min-h-screen bg-white text-black">
       {/* Hero Section */}
@@ -286,8 +326,8 @@ export default function Home() {
 
           <div className="mx-auto mt-6 h-1.5 w-32 bg-yellow-500" />
 
-          <div className="mx-auto mt-6 max-w-2xl overflow-hidden">
-            <VidalyticsEmbed embedId="nZh3ZMAQKBFmQv7m" accountId={VIDALYTICS_ACCOUNT} />
+          <div className="mx-auto mt-6 max-w-2xl overflow-hidden rounded-lg border-4 border-yellow-500">
+            <div id="vidalytics_embed_nZh3ZMAQKBFmQv7m" style={{ width: "100%", position: "relative", paddingTop: "56.25%" }} />
           </div>
         </div>
       </header>
