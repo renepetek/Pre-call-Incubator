@@ -262,7 +262,7 @@ function VideoFrame({
   );
 }
 
-export default function Home() {
+export default function ThankYou() {
   return (
     <div className="min-h-screen bg-white text-black">
       {/* Hero Section */}
