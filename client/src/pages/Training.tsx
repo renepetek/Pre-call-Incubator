@@ -346,6 +346,16 @@ export default function Training() {
             <p className="mx-auto mt-8 max-w-2xl text-base text-zinc-800 sm:text-lg">
               We have a 60-day satisfaction guarantee for anybody who joins our Educator Incubator Program. That means if you follow our process and you're not satisfied with the program and want to leave within the first 60 days, we will give you a full refund.
             </p>
+            <p className="mx-auto mt-5 max-w-2xl text-base text-zinc-800 sm:text-lg">
+              This is to minimize the potential loss you could have working with us. We want to minimize the risk as much as possible for you.
+            </p>
+            <p className="mx-auto mt-5 max-w-2xl text-base text-zinc-800 sm:text-lg">
+              For additional details on how this works,{" "}
+              <a href="/terms" className="font-bold text-yellow-600 hover:text-yellow-700 underline">
+                click here
+              </a>
+              .
+            </p>
 
             <div className="mt-12">
               <CtaSlim />
