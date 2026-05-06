@@ -158,54 +158,29 @@ function VidalyticsEmbed({ embedId, accountId }: { embedId: string; accountId: s
   );
 }
 
-function StarIcon({ className }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 24 24" aria-hidden className={className}>
-      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
-    </svg>
-  );
-}
-
 function CtaCard() {
   return (
-    <div className="relative mx-auto max-w-2xl overflow-hidden rounded-3xl bg-zinc-950 px-6 py-12 text-center ring-1 ring-white/5 sm:px-12 sm:py-14">
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 -top-32 mx-auto h-64 w-3/4 rounded-full bg-yellow-500/20 blur-3xl"
-      />
+    <div className="text-center">
+      <h3 className="font-display text-xl font-bold leading-[1.2] tracking-tight text-black sm:text-2xl">
+        Ready to <span className="text-yellow-500">Build</span> Your Own Online Tutoring Business?
+      </h3>
 
-      <div className="relative">
-        <h3 className="font-display text-2xl font-bold leading-[1.15] tracking-tight text-white sm:text-[1.875rem] md:text-[2rem]">
-          Ready to{" "}
-          <span className="relative inline-block text-yellow-500">
-            Build
-            <span className="absolute inset-x-0 -bottom-1 h-[3px] rounded-full bg-yellow-500" />
-          </span>{" "}
-          Your Own Online Tutoring Business?
-        </h3>
+      <p className="mx-auto mt-4 max-w-md text-sm text-zinc-600 sm:text-base">
+        If you want my help doing it{" "}
+        <span className="font-bold text-zinc-900">1-on-1</span>, book a call with us:
+      </p>
 
-        <p className="mx-auto mt-5 max-w-md text-sm text-zinc-300 sm:text-base">
-          If you want my help doing it{" "}
-          <span className="font-bold text-white">1-on-1</span>, book in a call with us by clicking the button below:
-        </p>
+      <a
+        href={BOOK_CALL_URL}
+        className="group/cta mt-7 inline-flex items-center gap-2.5 rounded-lg bg-yellow-500 px-10 py-4 font-display text-sm font-bold uppercase tracking-[0.1em] text-black shadow-[0_0_30px_rgba(234,179,8,0.35)] transition hover:-translate-y-0.5 hover:bg-yellow-400 hover:shadow-[0_12px_40px_rgba(234,179,8,0.5)] sm:px-12 sm:py-5 sm:text-base"
+      >
+        Yes, I Want to Build a Tutoring Business
+        <span className="transition-transform group-hover/cta:translate-x-1">→</span>
+      </a>
 
-        <a
-          href={BOOK_CALL_URL}
-          className="group/cta mt-8 inline-flex w-full max-w-md items-center justify-center gap-2 rounded-lg bg-yellow-500 px-6 py-5 font-display text-sm font-bold uppercase tracking-wide text-black shadow-[0_12px_40px_-10px_rgba(234,179,8,0.6)] transition hover:bg-yellow-400 hover:shadow-[0_16px_48px_-10px_rgba(234,179,8,0.8)] sm:text-base"
-        >
-          <span>Yes, I Want to Build a Tutoring Business</span>
-          <span className="transition-transform group-hover/cta:translate-x-1">→</span>
-        </a>
-        <p className="mt-4 text-[11px] font-bold uppercase tracking-[0.18em] text-yellow-500 sm:text-xs">
-          Book In My Free 1:1 Roadmap Session
-        </p>
-
-        <div className="mt-9 flex items-center justify-center gap-1" aria-label="5 out of 5 stars">
-          {Array.from({ length: 5 }).map((_, i) => (
-            <StarIcon key={i} className="h-5 w-5 fill-yellow-500" />
-          ))}
-        </div>
-      </div>
+      <p className="mt-3 text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500 sm:text-xs">
+        Book In My Free 1:1 Roadmap Session
+      </p>
     </div>
   );
 }
