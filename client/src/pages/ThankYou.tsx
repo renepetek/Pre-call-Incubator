@@ -371,8 +371,21 @@ export default function ThankYou() {
       </main>
 
       <footer className="border-t border-yellow-500 bg-zinc-100 px-5 py-8 text-center text-sm text-zinc-700 sm:px-8">
-        <p className="font-bold">© 2025 KST Marketing. All rights reserved.</p>
-        <p className="mt-2">Terms and Conditions | Privacy Policy</p>
+        <p className="font-bold">© 2026 KST Marketing. All rights reserved.</p>
+        <p className="mt-2">
+          <a href="/terms" className="hover:text-yellow-600">
+            Terms and Conditions
+          </a>
+          {" | "}
+          <a
+            href="https://kst-marketing.com/policy/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-yellow-600"
+          >
+            Privacy Policy
+          </a>
+        </p>
       </footer>
     </div>
   );

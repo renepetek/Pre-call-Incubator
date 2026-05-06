@@ -270,7 +270,7 @@ export default function Training() {
         <section className="bg-zinc-100 px-5 py-16 sm:px-8 sm:py-20">
           <div className="mx-auto max-w-3xl">
             <h2 className="font-display text-2xl font-bold leading-[1.15] tracking-tight text-black sm:text-3xl md:text-4xl text-center">
-              Here's How We Can Help You Inside The Online Tutoring Business Program
+              Here's How We Can Help You Inside the Educator Incubator Program
             </h2>
             <div className="mx-auto mt-6 h-1 w-32 bg-yellow-500" />
 
@@ -344,7 +344,7 @@ export default function Training() {
             </h3>
             <div className="mx-auto mt-6 h-1 w-32 bg-yellow-500" />
             <p className="mx-auto mt-8 max-w-2xl text-base text-zinc-800 sm:text-lg">
-              We have a 60-day satisfaction guarantee for anybody who joins our Online Tutoring Business Program. That means if you follow our process and you're not satisfied with the program and want to leave within the first 60 days, we will give you a full refund.
+              We have a 60-day satisfaction guarantee for anybody who joins our Educator Incubator Program. That means if you follow our process and you're not satisfied with the program and want to leave within the first 60 days, we will give you a full refund.
             </p>
 
             <div className="mt-12">
@@ -395,8 +395,21 @@ export default function Training() {
       </main>
 
       <footer className="border-t border-yellow-500 bg-zinc-100 px-5 py-8 text-center text-sm text-zinc-700 sm:px-8">
-        <p className="font-bold">© 2025 KST Marketing. All rights reserved.</p>
-        <p className="mt-2">Terms and Conditions | Privacy Policy</p>
+        <p className="font-bold">© 2026 KST Marketing. All rights reserved.</p>
+        <p className="mt-2">
+          <a href="/terms" className="hover:text-yellow-600">
+            Terms and Conditions
+          </a>
+          {" | "}
+          <a
+            href="https://kst-marketing.com/policy/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-yellow-600"
+          >
+            Privacy Policy
+          </a>
+        </p>
       </footer>
     </div>
   );
