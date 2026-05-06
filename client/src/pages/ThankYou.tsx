@@ -279,12 +279,12 @@ export default function ThankYou() {
             </div>
           </div>
 
-          <h1 className="mx-auto mt-4 max-w-2xl font-display text-3xl font-bold leading-[1.05] tracking-tight text-black sm:text-4xl md:text-5xl">
+          <h1 className="mx-auto mt-4 max-w-2xl font-display text-2xl font-bold leading-[1.1] tracking-tight text-black sm:text-3xl md:text-4xl">
             Watch the video below in full before moving on to the rest of the page{" "}
             <span className="inline-block">👇</span>
           </h1>
 
-          <div className="mx-auto mt-6 h-1.5 w-32 bg-yellow-500" />
+          <div className="mx-auto mt-6 h-1 w-32 bg-yellow-500" />
 
           <div className="mx-auto mt-6 max-w-2xl overflow-hidden">
             <VidalyticsEmbed embedId="nZh3ZMAQKBFmQv7m" accountId={VIDALYTICS_ACCOUNT} />
@@ -296,10 +296,10 @@ export default function ThankYou() {
         {/* FAQ Section */}
         <section className="bg-zinc-100 px-5 py-12 sm:px-8 sm:py-14">
           <div className="mx-auto max-w-6xl">
-            <h2 className="font-display text-3xl font-bold leading-[1.05] tracking-tight text-black sm:text-4xl md:text-5xl text-center">
+            <h2 className="font-display text-2xl font-bold leading-[1.1] tracking-tight text-black sm:text-3xl md:text-4xl text-center">
               Frequently Asked Questions
             </h2>
-            <div className="mx-auto mt-5 h-1.5 w-32 bg-yellow-500" />
+            <div className="mx-auto mt-5 h-1 w-32 bg-yellow-500" />
 
             <div className="mt-10 grid gap-5 md:grid-cols-2">
               {faqVideos.map((embedId, i) => (
@@ -314,10 +314,10 @@ export default function ThankYou() {
         {/* Case Studies Section */}
         <section className="px-5 py-16 sm:px-8 sm:py-20">
           <div className="mx-auto max-w-6xl">
-            <h2 className="font-display text-4xl font-bold leading-[1.05] tracking-tight text-black sm:text-5xl md:text-6xl text-center">
+            <h2 className="font-display text-3xl font-bold leading-[1.05] tracking-tight text-black sm:text-4xl md:text-5xl text-center">
               Our Case Studies
             </h2>
-            <div className="mx-auto mt-6 h-1.5 w-48 bg-yellow-500" />
+            <div className="mx-auto mt-6 h-1 w-48 bg-yellow-500" />
 
             <p className="mx-auto mt-8 max-w-2xl text-center text-lg font-semibold text-zinc-800">
               We Give You Proven, Copy & Paste AI Workflows You Can Sell to Businesses—Zero Technical Skills Required
@@ -350,10 +350,10 @@ export default function ThankYou() {
         {/* Testimonials Section */}
         <section className="px-5 py-16 sm:px-8 sm:py-20">
           <div className="mx-auto max-w-6xl">
-            <h2 className="font-display text-4xl font-bold leading-[1.05] tracking-tight text-black sm:text-5xl md:text-6xl text-center">
+            <h2 className="font-display text-3xl font-bold leading-[1.05] tracking-tight text-black sm:text-4xl md:text-5xl text-center">
               Testimonials
             </h2>
-            <div className="mx-auto mt-6 h-1.5 w-48 bg-yellow-500" />
+            <div className="mx-auto mt-6 h-1 w-48 bg-yellow-500" />
 
             <div className="mt-12 columns-1 gap-4 sm:columns-2 lg:columns-3">
               {TESTIMONIAL_IMAGES.map((src) => (
