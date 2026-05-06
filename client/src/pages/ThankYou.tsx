@@ -150,7 +150,7 @@ function Logo() {
       <div className="relative h-5 w-6 rotate-45 bg-yellow-500">
         <span className="absolute inset-1 bg-white/90" />
       </div>
-      <span className="font-display text-xl font-black uppercase tracking-[0.16em] text-black sm:text-2xl">
+      <span className="font-display text-xl font-bold uppercase tracking-[0.16em] text-black sm:text-2xl">
         KST <span className="text-yellow-500">Marketing</span>
       </span>
     </div>
@@ -268,18 +268,18 @@ export default function ThankYou() {
       {/* Hero Section */}
       <header className="border-b border-zinc-200 px-5 py-10 sm:px-8 sm:py-14">
         <div className="mx-auto max-w-3xl text-center">
-          <div className="font-display text-xl font-black uppercase tracking-[0.16em] text-yellow-500 sm:text-2xl border-b-2 border-yellow-500 pb-2 inline-block">
+          <div className="font-display text-xl font-bold uppercase tracking-[0.16em] text-yellow-500 sm:text-2xl border-b-2 border-yellow-500 pb-2 inline-block">
             Important Next Steps Below
           </div>
 
           <div className="mt-5 flex justify-center">
-            <div className="inline-flex items-center gap-2 text-sm font-black uppercase tracking-wide text-emerald-600">
+            <div className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wide text-emerald-600">
               <span className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
               Your meeting is scheduled
             </div>
           </div>
 
-          <h1 className="mx-auto mt-4 max-w-2xl font-display text-3xl font-black uppercase leading-[1] tracking-tight text-black sm:text-4xl md:text-5xl">
+          <h1 className="mx-auto mt-4 max-w-2xl font-display text-3xl font-bold leading-[1.05] tracking-tight text-black sm:text-4xl md:text-5xl">
             Watch the video below in full before moving on to the rest of the page{" "}
             <span className="inline-block">👇</span>
           </h1>
@@ -296,7 +296,7 @@ export default function ThankYou() {
         {/* FAQ Section */}
         <section className="bg-zinc-100 px-5 py-12 sm:px-8 sm:py-14">
           <div className="mx-auto max-w-6xl">
-            <h2 className="font-display text-3xl font-black uppercase leading-none tracking-tight text-black sm:text-4xl md:text-5xl text-center">
+            <h2 className="font-display text-3xl font-bold leading-[1.05] tracking-tight text-black sm:text-4xl md:text-5xl text-center">
               Frequently Asked Questions
             </h2>
             <div className="mx-auto mt-5 h-1.5 w-32 bg-yellow-500" />
@@ -314,7 +314,7 @@ export default function ThankYou() {
         {/* Case Studies Section */}
         <section className="px-5 py-16 sm:px-8 sm:py-20">
           <div className="mx-auto max-w-6xl">
-            <h2 className="font-display text-4xl font-black uppercase leading-none tracking-tight text-black sm:text-5xl md:text-6xl text-center">
+            <h2 className="font-display text-4xl font-bold leading-[1.05] tracking-tight text-black sm:text-5xl md:text-6xl text-center">
               Our Case Studies
             </h2>
             <div className="mx-auto mt-6 h-1.5 w-48 bg-yellow-500" />
@@ -327,7 +327,7 @@ export default function ThankYou() {
               {caseStudies.map((study) => (
                 <article key={study.key} className="rounded-lg bg-zinc-100 p-6">
                   <p className="text-base font-semibold text-yellow-600">{study.transformation}</p>
-                  <h3 className="mt-2 font-display text-2xl font-black text-black">{study.name}</h3>
+                  <h3 className="mt-2 font-display text-2xl font-bold text-black">{study.name}</h3>
                   <div className="relative mt-5 aspect-video overflow-hidden rounded-lg bg-black">
                     <iframe
                       src={normalizeEmbedUrl(VIDEO_LINKS[study.key])}
@@ -350,7 +350,7 @@ export default function ThankYou() {
         {/* Testimonials Section */}
         <section className="px-5 py-16 sm:px-8 sm:py-20">
           <div className="mx-auto max-w-6xl">
-            <h2 className="font-display text-4xl font-black uppercase leading-none tracking-tight text-black sm:text-5xl md:text-6xl text-center">
+            <h2 className="font-display text-4xl font-bold leading-[1.05] tracking-tight text-black sm:text-5xl md:text-6xl text-center">
               Testimonials
             </h2>
             <div className="mx-auto mt-6 h-1.5 w-48 bg-yellow-500" />
