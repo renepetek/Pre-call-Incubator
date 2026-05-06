@@ -158,31 +158,27 @@ function VidalyticsEmbed({ embedId, accountId }: { embedId: string; accountId: s
   );
 }
 
-function CtaBlock() {
+function CtaCard() {
   return (
-    <section className="bg-black px-5 py-14 sm:px-8 sm:py-20">
-      <div className="mx-auto max-w-3xl text-center">
-        <h2 className="font-display text-3xl font-black uppercase leading-[1.05] tracking-tight text-white sm:text-4xl md:text-5xl">
-          Ready to Build Your Own{" "}
-          <span className="text-yellow-500">Online Tutoring Business?</span>
-        </h2>
-        <p className="mx-auto mt-5 max-w-xl text-base text-zinc-300 sm:text-lg">
-          If you want my help doing it{" "}
-          <span className="font-bold text-white">1-on-1</span>, book in a call with us by clicking the button below:
-        </p>
-        <div className="mx-auto mt-6 h-1.5 w-32 bg-yellow-500" />
+    <div className="mx-auto max-w-2xl rounded-2xl bg-black px-6 py-10 text-center sm:px-10 sm:py-12">
+      <h3 className="font-display text-2xl font-black leading-[1.1] tracking-tight text-white sm:text-3xl">
+        Ready to <span className="text-yellow-500">Build</span> Your Own Online Tutoring Business?
+      </h3>
+      <p className="mx-auto mt-4 max-w-md text-sm text-zinc-300 sm:text-base">
+        If you want my help doing it{" "}
+        <span className="font-bold text-white">1-on-1</span>, book in a call with us by clicking the button below:
+      </p>
 
-        <a
-          href={BOOK_CALL_URL}
-          className="mt-8 inline-block rounded-md bg-yellow-500 px-8 py-5 font-display text-base font-black uppercase tracking-wide text-black transition hover:bg-yellow-400 sm:text-lg"
-        >
-          Yes, I Want to Build a Tutoring Business
-        </a>
-        <p className="mt-3 text-sm font-bold uppercase tracking-wide text-yellow-500">
-          Book In My Free 1:1 Roadmap Session
-        </p>
-      </div>
-    </section>
+      <a
+        href={BOOK_CALL_URL}
+        className="mt-7 inline-block w-full max-w-md rounded-md bg-yellow-500 px-6 py-4 font-display text-sm font-black uppercase tracking-wide text-black transition hover:bg-yellow-400 sm:text-base"
+      >
+        Yes, I Want to Build a Tutoring Business →
+      </a>
+      <p className="mt-3 text-[11px] font-bold uppercase tracking-[0.16em] text-yellow-500 sm:text-xs">
+        Book In My Free 1:1 Roadmap Session
+      </p>
+    </div>
   );
 }
 
@@ -220,62 +216,91 @@ export default function Training() {
       <main>
         {/* How We Can Help Section */}
         <section className="px-5 py-16 sm:px-8 sm:py-20">
-          <div className="mx-auto max-w-5xl">
-            <h2 className="font-display text-3xl font-black uppercase leading-[1.05] tracking-tight text-black sm:text-4xl md:text-5xl text-center">
+          <div className="mx-auto max-w-3xl">
+            <h2 className="font-display text-3xl font-black leading-[1.1] tracking-tight text-black sm:text-4xl md:text-5xl text-center">
               Here's How We Can Help You Inside{" "}
               <span className="text-yellow-500">The Online Tutoring Business Program</span>
             </h2>
             <div className="mx-auto mt-6 h-1.5 w-32 bg-yellow-500" />
 
-            <div className="mt-12 grid gap-6 md:grid-cols-2">
+            <ul className="mt-12 space-y-5">
               {pillars.map((p) => (
-                <div
-                  key={p.title}
-                  className="rounded-lg border-l-4 border-yellow-500 bg-zinc-100 p-6 sm:p-8"
-                >
-                  <h3 className="font-display text-xl font-black uppercase tracking-tight text-black sm:text-2xl">
-                    {p.title}
-                  </h3>
-                  <p className="mt-3 text-base text-zinc-800">{p.body}</p>
-                </div>
+                <li key={p.title} className="flex items-start gap-3 sm:gap-4">
+                  <span className="flex-shrink-0 select-none font-display text-2xl font-black leading-none text-yellow-500">
+                    »
+                  </span>
+                  <p className="text-base text-zinc-800 sm:text-lg">
+                    <span className="font-bold text-black">{p.title}:</span> {p.body}
+                  </p>
+                </li>
               ))}
+            </ul>
+
+            <h3 className="mt-16 font-display text-2xl font-black leading-[1.1] tracking-tight text-black sm:text-3xl md:text-4xl text-center">
+              The Next Step Is To<br />See If You're A Good Fit
+            </h3>
+            <div className="mt-8 space-y-4 text-base text-zinc-800 sm:text-lg">
+              <p>
+                This program isn't for everyone. We're looking for a specific type of person who is coachable, resourceful, and ready to take massive action.
+              </p>
+              <p>
+                To see if that's you, the next step is to fill out a short application and book a 1-on-1 consultation call with our team.
+              </p>
+              <p>
+                This is not a high-pressure sales call. It's a strategy session where we'll dive into your personal situation, your goals, and see if we can genuinely help you. If it's a good fit, we'll invite you to join. If not, we'll be honest and point you in the right direction.
+              </p>
+            </div>
+
+            <div className="mt-12">
+              <CtaCard />
             </div>
           </div>
         </section>
 
-        <CtaBlock />
-
         {/* FAQ Section */}
-        <section className="bg-zinc-100 px-5 py-16 sm:px-8 sm:py-20">
+        <section className="px-5 py-16 sm:px-8 sm:py-20">
           <div className="mx-auto max-w-3xl">
-            <p className="text-center text-sm font-black uppercase tracking-[0.16em] text-zinc-500">
-              Frequently Asked Questions
-            </p>
-            <h2 className="mt-2 font-display text-3xl font-black uppercase leading-[1.05] tracking-tight text-black sm:text-4xl md:text-5xl text-center">
+            <div className="flex justify-center">
+              <span className="inline-flex items-center gap-2 rounded-full bg-black px-4 py-1.5 text-[11px] font-black uppercase tracking-[0.2em] text-white sm:text-xs">
+                <span className="h-1.5 w-1.5 rounded-full bg-yellow-500" />
+                Frequently Asked Questions
+              </span>
+            </div>
+            <h2 className="mt-6 font-display text-4xl font-black leading-[1.05] tracking-tight text-black sm:text-5xl md:text-6xl text-center">
               Questions You May Have…
             </h2>
             <div className="mx-auto mt-6 h-1.5 w-32 bg-yellow-500" />
 
-            <div className="mt-10 space-y-4">
+            <div className="mt-12 border-t border-zinc-200">
               {faqs.map((faq) => (
                 <details
                   key={faq.q}
-                  className="group rounded-lg border border-zinc-200 bg-white p-5 sm:p-6 [&_summary::-webkit-details-marker]:hidden"
+                  className="group border-b border-zinc-200 [&_summary::-webkit-details-marker]:hidden"
                 >
-                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 font-display text-lg font-black uppercase tracking-tight text-black sm:text-xl">
+                  <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-base text-zinc-800 sm:text-lg">
                     <span>{faq.q}</span>
-                    <span className="grid h-8 w-8 flex-shrink-0 place-items-center rounded-md border-2 border-yellow-500 text-yellow-500 transition group-open:rotate-45">
-                      <span className="block text-2xl leading-none">+</span>
+                    <span className="flex-shrink-0 text-2xl font-black leading-none text-yellow-500 transition group-open:rotate-45">
+                      +
                     </span>
                   </summary>
-                  <p className="mt-4 text-base leading-relaxed text-zinc-700">{faq.a}</p>
+                  <p className="pb-5 pr-10 text-base leading-relaxed text-zinc-700">{faq.a}</p>
                 </details>
               ))}
             </div>
+
+            <h3 className="mt-20 font-display text-3xl font-black leading-[1.1] tracking-tight text-black sm:text-4xl md:text-5xl text-center">
+              If You Don't Get Results, You Don't Pay
+            </h3>
+            <div className="mx-auto mt-6 h-1.5 w-32 bg-yellow-500" />
+            <p className="mx-auto mt-8 max-w-2xl text-base text-zinc-800 sm:text-lg">
+              We have a 60-day satisfaction guarantee for anybody who joins our Online Tutoring Business Program. That means if you follow our process and you're not satisfied with the program and want to leave within the first 60 days, we will give you a full refund.
+            </p>
+
+            <div className="mt-12">
+              <CtaCard />
+            </div>
           </div>
         </section>
-
-        <CtaBlock />
 
         {/* Case Studies Section */}
         <section className="px-5 py-16 sm:px-8 sm:py-20">
