@@ -158,22 +158,28 @@ function VidalyticsEmbed({ embedId, accountId }: { embedId: string; accountId: s
   );
 }
 
-function CtaCard() {
+const CTA_BUTTON_CLASS =
+  "group/cta inline-flex items-center gap-2.5 rounded-lg bg-yellow-500 px-10 py-4 font-display text-sm font-bold uppercase tracking-[0.1em] text-black shadow-[0_0_30px_rgba(234,179,8,0.35)] transition hover:-translate-y-0.5 hover:bg-yellow-400 hover:shadow-[0_12px_40px_rgba(234,179,8,0.5)] sm:px-12 sm:py-5 sm:text-base";
+
+function CtaHeadline() {
+  return (
+    <h3 className="font-display text-xl font-bold leading-[1.2] tracking-tight text-black sm:text-2xl">
+      Ready to <span className="text-yellow-500">Build</span> Your Own Online Tutoring Business?
+    </h3>
+  );
+}
+
+function CtaFull() {
   return (
     <div className="text-center">
-      <h3 className="font-display text-xl font-bold leading-[1.2] tracking-tight text-black sm:text-2xl">
-        Ready to <span className="text-yellow-500">Build</span> Your Own Online Tutoring Business?
-      </h3>
+      <CtaHeadline />
 
       <p className="mx-auto mt-4 max-w-md text-sm text-zinc-600 sm:text-base">
         If you want my help doing it{" "}
         <span className="font-bold text-zinc-900">1-on-1</span>, book a call with us:
       </p>
 
-      <a
-        href={BOOK_CALL_URL}
-        className="group/cta mt-7 inline-flex items-center gap-2.5 rounded-lg bg-yellow-500 px-10 py-4 font-display text-sm font-bold uppercase tracking-[0.1em] text-black shadow-[0_0_30px_rgba(234,179,8,0.35)] transition hover:-translate-y-0.5 hover:bg-yellow-400 hover:shadow-[0_12px_40px_rgba(234,179,8,0.5)] sm:px-12 sm:py-5 sm:text-base"
-      >
+      <a href={BOOK_CALL_URL} className={`mt-7 ${CTA_BUTTON_CLASS}`}>
         Yes, I Want to Build a Tutoring Business
         <span className="transition-transform group-hover/cta:translate-x-1">→</span>
       </a>
@@ -181,6 +187,19 @@ function CtaCard() {
       <p className="mt-3 text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500 sm:text-xs">
         Book In My Free 1:1 Roadmap Session
       </p>
+    </div>
+  );
+}
+
+function CtaSlim() {
+  return (
+    <div className="text-center">
+      <CtaHeadline />
+
+      <a href={BOOK_CALL_URL} className={`mt-6 ${CTA_BUTTON_CLASS}`}>
+        Book In My Free 1:1 Roadmap Session
+        <span className="transition-transform group-hover/cta:translate-x-1">→</span>
+      </a>
     </div>
   );
 }
@@ -212,6 +231,10 @@ export default function Training() {
 
           <div className="mx-auto mt-6 max-w-2xl overflow-hidden">
             <VidalyticsEmbed embedId={HERO_EMBED_ID} accountId={VIDALYTICS_ACCOUNT} />
+          </div>
+
+          <div className="mt-12">
+            <CtaFull />
           </div>
         </div>
       </header>
@@ -254,7 +277,7 @@ export default function Training() {
             </div>
 
             <div className="mt-12">
-              <CtaCard />
+              <CtaSlim />
             </div>
           </div>
         </section>
@@ -299,7 +322,7 @@ export default function Training() {
             </p>
 
             <div className="mt-12">
-              <CtaCard />
+              <CtaSlim />
             </div>
           </div>
         </section>
