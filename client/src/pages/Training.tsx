@@ -242,7 +242,7 @@ export default function Training() {
             <span className="text-zinc-700">Free Training Unlocked</span>
           </div>
 
-          <h1 className="mx-auto mt-5 max-w-3xl font-display text-3xl font-bold leading-[1.05] tracking-tight text-black sm:text-4xl md:text-5xl">
+          <h1 className="mx-auto mt-5 max-w-3xl font-display text-2xl font-bold leading-[1.1] tracking-tight text-black sm:text-3xl md:text-4xl">
             <span className="text-yellow-500 uppercase">Watch Now</span>{" "}
             The Step-by-Step Blueprint to Building an Online Tutoring Business from 0 to $10k, $30k, or Even $50k Per Month
           </h1>
@@ -253,7 +253,7 @@ export default function Training() {
             working for our tutoring clients right now.
           </p>
 
-          <div className="mx-auto mt-6 h-1.5 w-32 bg-yellow-500" />
+          <div className="mx-auto mt-6 h-1 w-32 bg-yellow-500" />
 
           <div className="mx-auto mt-6 max-w-2xl overflow-hidden">
             <VidalyticsEmbed embedId={HERO_EMBED_ID} accountId={VIDALYTICS_ACCOUNT} />
@@ -269,10 +269,10 @@ export default function Training() {
         {/* How We Can Help Section */}
         <section className="bg-zinc-100 px-5 py-16 sm:px-8 sm:py-20">
           <div className="mx-auto max-w-3xl">
-            <h2 className="font-display text-3xl font-bold leading-[1.1] tracking-tight text-black sm:text-4xl md:text-5xl text-center">
+            <h2 className="font-display text-2xl font-bold leading-[1.15] tracking-tight text-black sm:text-3xl md:text-4xl text-center">
               Here's How We Can Help You Inside The Online Tutoring Business Program
             </h2>
-            <div className="mx-auto mt-6 h-1.5 w-32 bg-yellow-500" />
+            <div className="mx-auto mt-6 h-1 w-32 bg-yellow-500" />
 
             <ul className="mt-12 space-y-5">
               {pillars.map((p) => (
@@ -287,7 +287,7 @@ export default function Training() {
               ))}
             </ul>
 
-            <h3 className="mt-16 font-display text-2xl font-bold leading-[1.1] tracking-tight text-black sm:text-3xl md:text-4xl text-center">
+            <h3 className="mt-16 font-display text-xl font-bold leading-[1.15] tracking-tight text-black sm:text-2xl md:text-3xl text-center">
               The Next Step Is To<br />See If You're A Good Fit
             </h3>
             <div className="mt-8 space-y-4 text-base text-zinc-800 sm:text-lg">
@@ -317,10 +317,10 @@ export default function Training() {
                 Frequently Asked Questions
               </span>
             </div>
-            <h2 className="mt-6 font-display text-4xl font-bold leading-[1.05] tracking-tight text-black sm:text-5xl md:text-6xl text-center">
+            <h2 className="mt-6 font-display text-3xl font-bold leading-[1.05] tracking-tight text-black sm:text-4xl md:text-5xl text-center">
               Questions You May Have…
             </h2>
-            <div className="mx-auto mt-6 h-1.5 w-32 bg-yellow-500" />
+            <div className="mx-auto mt-6 h-1 w-32 bg-yellow-500" />
 
             <div className="mt-12 border-t border-zinc-200">
               {faqs.map((faq) => (
@@ -339,10 +339,10 @@ export default function Training() {
               ))}
             </div>
 
-            <h3 className="mt-20 font-display text-3xl font-bold leading-[1.1] tracking-tight text-black sm:text-4xl md:text-5xl text-center">
+            <h3 className="mt-20 font-display text-xl font-bold leading-[1.2] tracking-tight text-black sm:text-2xl md:text-3xl text-center whitespace-nowrap">
               If You Don't Get Results, You Don't Pay
             </h3>
-            <div className="mx-auto mt-6 h-1.5 w-32 bg-yellow-500" />
+            <div className="mx-auto mt-6 h-1 w-32 bg-yellow-500" />
             <p className="mx-auto mt-8 max-w-2xl text-base text-zinc-800 sm:text-lg">
               We have a 60-day satisfaction guarantee for anybody who joins our Online Tutoring Business Program. That means if you follow our process and you're not satisfied with the program and want to leave within the first 60 days, we will give you a full refund.
             </p>
@@ -356,10 +356,10 @@ export default function Training() {
         {/* Case Studies Section */}
         <section className="bg-zinc-100 px-5 py-16 sm:px-8 sm:py-20">
           <div className="mx-auto max-w-6xl">
-            <h2 className="font-display text-4xl font-bold leading-[1.05] tracking-tight text-black sm:text-5xl md:text-6xl text-center">
+            <h2 className="font-display text-3xl font-bold leading-[1.05] tracking-tight text-black sm:text-4xl md:text-5xl text-center">
               Our Case Studies
             </h2>
-            <div className="mx-auto mt-6 h-1.5 w-48 bg-yellow-500" />
+            <div className="mx-auto mt-6 h-1 w-48 bg-yellow-500" />
 
             <p className="mx-auto mt-8 max-w-2xl text-center text-lg font-semibold text-zinc-800">
               We Give You Proven, Copy & Paste Tutoring Business Workflows You Can Use—Zero Technical Skills Required
