@@ -66,7 +66,7 @@ const faqs = [
   },
   {
     q: "How much time do I need to commit?",
-    a: "Most of our clients start while still tutoring full-time and dedicate 1-2 hours per day to building the business in their first 90 days. The systems are designed to compound — you put more in early, then it scales.",
+    a: "Most of our clients start while still working full-time and dedicate 1-2 hours per day to building the business in their first 90 days. The systems are designed to compound — you put more in early, then it scales.",
   },
   {
     q: "What if I have no tech skills or business experience?",
