@@ -161,7 +161,7 @@ function VidalyticsEmbed({ embedId, accountId }: { embedId: string; accountId: s
 function CtaCard() {
   return (
     <div className="mx-auto max-w-2xl rounded-2xl bg-black px-6 py-10 text-center sm:px-10 sm:py-12">
-      <h3 className="font-display text-2xl font-black leading-[1.1] tracking-tight text-white sm:text-3xl">
+      <h3 className="font-display text-2xl font-bold leading-[1.1] tracking-tight text-white sm:text-3xl">
         Ready to <span className="text-yellow-500">Build</span> Your Own Online Tutoring Business?
       </h3>
       <p className="mx-auto mt-4 max-w-md text-sm text-zinc-300 sm:text-base">
@@ -171,7 +171,7 @@ function CtaCard() {
 
       <a
         href={BOOK_CALL_URL}
-        className="mt-7 inline-block w-full max-w-md rounded-md bg-yellow-500 px-6 py-4 font-display text-sm font-black uppercase tracking-wide text-black transition hover:bg-yellow-400 sm:text-base"
+        className="mt-7 inline-block w-full max-w-md rounded-md bg-yellow-500 px-6 py-4 font-display text-sm font-bold uppercase tracking-wide text-black transition hover:bg-yellow-400 sm:text-base"
       >
         Yes, I Want to Build a Tutoring Business →
       </a>
@@ -188,15 +188,15 @@ export default function Training() {
       {/* Hero / VSL Section */}
       <header className="border-b border-zinc-200 px-5 py-10 sm:px-8 sm:py-14">
         <div className="mx-auto max-w-3xl text-center">
-          <div className="inline-flex items-center gap-2 text-sm font-black uppercase tracking-wide">
+          <div className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wide">
             <span className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
             <span className="text-emerald-600">Success</span>
             <span className="text-zinc-700">Free Training Unlocked</span>
           </div>
 
-          <h1 className="mx-auto mt-5 max-w-3xl font-display text-3xl font-black uppercase leading-[1.05] tracking-tight text-black sm:text-4xl md:text-5xl">
-            <span className="text-yellow-500">Watch Now</span>{" "}
-            The Step-By-Step Blueprint To Building An Online Tutoring Business From 0 To $10k, $30k, Or Even $50k Per Month
+          <h1 className="mx-auto mt-5 max-w-3xl font-display text-3xl font-bold leading-[1.05] tracking-tight text-black sm:text-4xl md:text-5xl">
+            <span className="text-yellow-500 uppercase">Watch Now</span>{" "}
+            The Step-by-Step Blueprint to Building an Online Tutoring Business from 0 to $10k, $30k, or Even $50k Per Month
           </h1>
 
           <p className="mx-auto mt-5 max-w-2xl text-base text-zinc-700 sm:text-lg">
@@ -217,16 +217,15 @@ export default function Training() {
         {/* How We Can Help Section */}
         <section className="px-5 py-16 sm:px-8 sm:py-20">
           <div className="mx-auto max-w-3xl">
-            <h2 className="font-display text-3xl font-black leading-[1.1] tracking-tight text-black sm:text-4xl md:text-5xl text-center">
-              Here's How We Can Help You Inside{" "}
-              <span className="text-yellow-500">The Online Tutoring Business Program</span>
+            <h2 className="font-display text-3xl font-bold leading-[1.1] tracking-tight text-black sm:text-4xl md:text-5xl text-center">
+              Here's How We Can Help You Inside The Online Tutoring Business Program
             </h2>
             <div className="mx-auto mt-6 h-1.5 w-32 bg-yellow-500" />
 
             <ul className="mt-12 space-y-5">
               {pillars.map((p) => (
                 <li key={p.title} className="flex items-start gap-3 sm:gap-4">
-                  <span className="flex-shrink-0 select-none font-display text-2xl font-black leading-none text-yellow-500">
+                  <span className="flex-shrink-0 select-none font-display text-2xl font-bold leading-none text-yellow-500">
                     »
                   </span>
                   <p className="text-base text-zinc-800 sm:text-lg">
@@ -236,7 +235,7 @@ export default function Training() {
               ))}
             </ul>
 
-            <h3 className="mt-16 font-display text-2xl font-black leading-[1.1] tracking-tight text-black sm:text-3xl md:text-4xl text-center">
+            <h3 className="mt-16 font-display text-2xl font-bold leading-[1.1] tracking-tight text-black sm:text-3xl md:text-4xl text-center">
               The Next Step Is To<br />See If You're A Good Fit
             </h3>
             <div className="mt-8 space-y-4 text-base text-zinc-800 sm:text-lg">
@@ -261,12 +260,12 @@ export default function Training() {
         <section className="px-5 py-16 sm:px-8 sm:py-20">
           <div className="mx-auto max-w-3xl">
             <div className="flex justify-center">
-              <span className="inline-flex items-center gap-2 rounded-full bg-black px-4 py-1.5 text-[11px] font-black uppercase tracking-[0.2em] text-white sm:text-xs">
+              <span className="inline-flex items-center gap-2 rounded-full bg-black px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-white sm:text-xs">
                 <span className="h-1.5 w-1.5 rounded-full bg-yellow-500" />
                 Frequently Asked Questions
               </span>
             </div>
-            <h2 className="mt-6 font-display text-4xl font-black leading-[1.05] tracking-tight text-black sm:text-5xl md:text-6xl text-center">
+            <h2 className="mt-6 font-display text-4xl font-bold leading-[1.05] tracking-tight text-black sm:text-5xl md:text-6xl text-center">
               Questions You May Have…
             </h2>
             <div className="mx-auto mt-6 h-1.5 w-32 bg-yellow-500" />
@@ -279,7 +278,7 @@ export default function Training() {
                 >
                   <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-base text-zinc-800 sm:text-lg">
                     <span>{faq.q}</span>
-                    <span className="flex-shrink-0 text-2xl font-black leading-none text-yellow-500 transition group-open:rotate-45">
+                    <span className="flex-shrink-0 text-2xl font-bold leading-none text-yellow-500 transition group-open:rotate-45">
                       +
                     </span>
                   </summary>
@@ -288,7 +287,7 @@ export default function Training() {
               ))}
             </div>
 
-            <h3 className="mt-20 font-display text-3xl font-black leading-[1.1] tracking-tight text-black sm:text-4xl md:text-5xl text-center">
+            <h3 className="mt-20 font-display text-3xl font-bold leading-[1.1] tracking-tight text-black sm:text-4xl md:text-5xl text-center">
               If You Don't Get Results, You Don't Pay
             </h3>
             <div className="mx-auto mt-6 h-1.5 w-32 bg-yellow-500" />
@@ -305,7 +304,7 @@ export default function Training() {
         {/* Case Studies Section */}
         <section className="px-5 py-16 sm:px-8 sm:py-20">
           <div className="mx-auto max-w-6xl">
-            <h2 className="font-display text-4xl font-black uppercase leading-none tracking-tight text-black sm:text-5xl md:text-6xl text-center">
+            <h2 className="font-display text-4xl font-bold leading-[1.05] tracking-tight text-black sm:text-5xl md:text-6xl text-center">
               Our Case Studies
             </h2>
             <div className="mx-auto mt-6 h-1.5 w-48 bg-yellow-500" />
@@ -318,7 +317,7 @@ export default function Training() {
               {caseStudies.map((study) => (
                 <article key={study.key} className="rounded-lg bg-zinc-100 p-6">
                   <p className="text-base font-semibold text-yellow-600">{study.transformation}</p>
-                  <h3 className="mt-2 font-display text-2xl font-black text-black">{study.name}</h3>
+                  <h3 className="mt-2 font-display text-2xl font-bold text-black">{study.name}</h3>
                   <div className="relative mt-5 aspect-video overflow-hidden rounded-lg bg-black">
                     <iframe
                       src={normalizeEmbedUrl(VIDEO_LINKS[study.key])}
