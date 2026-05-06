@@ -17,7 +17,7 @@ const VIDEO_LINKS = {
 };
 
 const VIDALYTICS_ACCOUNT = "HjA51wM6";
-const HERO_EMBED_ID = "nZh3ZMAQKBFmQv7m"; // placeholder — same VSL as /thankyou
+const HERO_EMBED_ID = "j2_UAtKIuFVBGLZc";
 
 const TYPEFORM_BASE_URL = "https://form.typeform.com/to/P3NkAZnu";
 const UTM_KEYS = [
