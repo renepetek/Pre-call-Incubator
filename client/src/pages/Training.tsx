@@ -159,7 +159,7 @@ function VidalyticsEmbed({ embedId, accountId }: { embedId: string; accountId: s
 }
 
 const CTA_BUTTON_CLASS =
-  "group/cta inline-flex items-center gap-2.5 rounded-lg bg-yellow-500 px-10 py-4 font-display text-sm font-bold uppercase tracking-[0.1em] text-black shadow-[0_0_30px_rgba(234,179,8,0.35)] transition hover:-translate-y-0.5 hover:bg-yellow-400 hover:shadow-[0_12px_40px_rgba(234,179,8,0.5)] sm:px-12 sm:py-5 sm:text-base";
+  "inline-flex items-center justify-center rounded-lg bg-yellow-500 px-10 py-4 font-display text-sm font-bold uppercase tracking-[0.1em] text-black shadow-[0_0_30px_rgba(234,179,8,0.35)] transition hover:-translate-y-0.5 hover:bg-yellow-400 hover:shadow-[0_12px_40px_rgba(234,179,8,0.5)] sm:px-12 sm:py-5 sm:text-base";
 
 function CtaHeadline() {
   return (
@@ -181,7 +181,6 @@ function CtaFull() {
 
       <a href={BOOK_CALL_URL} className={`mt-7 ${CTA_BUTTON_CLASS}`}>
         Yes, I Want to Build a Tutoring Business
-        <span className="transition-transform group-hover/cta:translate-x-1">→</span>
       </a>
 
       <p className="mt-3 text-[10px] font-bold uppercase tracking-[0.2em] text-zinc-500 sm:text-xs">
@@ -198,7 +197,6 @@ function CtaSlim() {
 
       <a href={BOOK_CALL_URL} className={`mt-6 ${CTA_BUTTON_CLASS}`}>
         Book In My Free 1:1 Roadmap Session
-        <span className="transition-transform group-hover/cta:translate-x-1">→</span>
       </a>
     </div>
   );
@@ -241,7 +239,7 @@ export default function Training() {
 
       <main>
         {/* How We Can Help Section */}
-        <section className="px-5 py-16 sm:px-8 sm:py-20">
+        <section className="bg-zinc-100 px-5 py-16 sm:px-8 sm:py-20">
           <div className="mx-auto max-w-3xl">
             <h2 className="font-display text-3xl font-bold leading-[1.1] tracking-tight text-black sm:text-4xl md:text-5xl text-center">
               Here's How We Can Help You Inside The Online Tutoring Business Program
@@ -328,7 +326,7 @@ export default function Training() {
         </section>
 
         {/* Case Studies Section */}
-        <section className="px-5 py-16 sm:px-8 sm:py-20">
+        <section className="bg-zinc-100 px-5 py-16 sm:px-8 sm:py-20">
           <div className="mx-auto max-w-6xl">
             <h2 className="font-display text-4xl font-bold leading-[1.05] tracking-tight text-black sm:text-5xl md:text-6xl text-center">
               Our Case Studies
@@ -341,7 +339,7 @@ export default function Training() {
 
             <div className="mt-12 grid gap-6 md:grid-cols-2">
               {caseStudies.map((study) => (
-                <article key={study.key} className="rounded-lg bg-zinc-100 p-6">
+                <article key={study.key} className="rounded-lg bg-white p-6 ring-1 ring-zinc-200">
                   <p className="text-base font-semibold text-yellow-600">{study.transformation}</p>
                   <h3 className="mt-2 font-display text-2xl font-bold text-black">{study.name}</h3>
                   <div className="relative mt-5 aspect-video overflow-hidden rounded-lg bg-black">
