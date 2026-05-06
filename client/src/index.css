@@ -1,7 +1,7 @@
 /*
 Design philosophy: Exact replica of Client Ascension precall page with KST Marketing gold branding replacing red. Maintains original typography, spacing, shadows, and layout structure—but uses gold (#EAB308) instead of red (#DC2626).
 */
-@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Source+Sans+3:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800;900&family=Source+Sans+3:wght@400;500;600;700;800;900&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -44,7 +44,7 @@ Design philosophy: Exact replica of Client Ascension precall page with KST Marke
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  --font-display: 'Oswald', Impact, sans-serif;
+  --font-display: 'Geist', ui-sans-serif, system-ui, sans-serif;
   --font-sans: 'Source Sans 3', ui-sans-serif, system-ui, sans-serif;
 }
 
