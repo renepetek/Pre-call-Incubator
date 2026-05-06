@@ -19,8 +19,26 @@ const VIDEO_LINKS = {
 const VIDALYTICS_ACCOUNT = "HjA51wM6";
 const HERO_EMBED_ID = "nZh3ZMAQKBFmQv7m"; // placeholder — same VSL as /thankyou
 
-// TODO: replace with real booking URL (Calendly, GHL, etc.)
-const BOOK_CALL_URL = "#book-call";
+const TYPEFORM_BASE_URL = "https://form.typeform.com/to/P3NkAZnu";
+const UTM_KEYS = [
+  "utm_source",
+  "utm_medium",
+  "utm_campaign",
+  "utm_content",
+  "utm_term",
+] as const;
+
+function buildCtaUrl() {
+  if (typeof window === "undefined") return TYPEFORM_BASE_URL;
+  const incoming = new URLSearchParams(window.location.search);
+  const out = new URLSearchParams();
+  for (const key of UTM_KEYS) {
+    const value = incoming.get(key);
+    if (value) out.set(key, value);
+  }
+  const qs = out.toString();
+  return qs ? `${TYPEFORM_BASE_URL}?${qs}` : TYPEFORM_BASE_URL;
+}
 
 const pillars = [
   {
@@ -179,7 +197,12 @@ function CtaFull() {
         <span className="font-bold text-zinc-900">1-on-1</span>, book a call with us:
       </p>
 
-      <a href={BOOK_CALL_URL} className={`mt-7 ${CTA_BUTTON_CLASS}`}>
+      <a
+        href={buildCtaUrl()}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`mt-7 ${CTA_BUTTON_CLASS}`}
+      >
         Yes, I Want to Build a Tutoring Business
       </a>
 
@@ -195,7 +218,12 @@ function CtaSlim() {
     <div className="text-center">
       <CtaHeadline />
 
-      <a href={BOOK_CALL_URL} className={`mt-6 ${CTA_BUTTON_CLASS}`}>
+      <a
+        href={buildCtaUrl()}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`mt-6 ${CTA_BUTTON_CLASS}`}
+      >
         Book In My Free 1:1 Roadmap Session
       </a>
     </div>
@@ -358,6 +386,10 @@ export default function Training() {
             <p className="mx-auto mt-10 max-w-3xl text-center text-lg text-zinc-900">
               We have <strong>dozens more of these</strong>, with screenshots, full context, and the exact playbook each of them used.
             </p>
+
+            <div className="mt-16">
+              <CtaSlim />
+            </div>
           </div>
         </section>
       </main>
