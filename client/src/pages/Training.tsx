@@ -4,6 +4,13 @@ inside the program (4 pillars), a primary CTA, an accordion FAQ that pre-empts c
 objections, a repeat CTA, and case study video proof. Same KST gold branding throughout.
 */
 import { useEffect, useRef, useState } from "react";
+import {
+  trackCaseStudyView,
+  trackCtaClick,
+  trackFaqOpen,
+  trackOutboundClick,
+  type CtaLocation,
+} from "@/lib/analytics";
 
 const VIDEO_LINKS = {
   sajib: "https://www.youtube.com/watch?v=Wpvz6uusSZY",
@@ -187,7 +194,7 @@ function CtaHeadline() {
   );
 }
 
-function CtaFull() {
+function CtaFull({ location }: { location: CtaLocation }) {
   return (
     <div className="text-center">
       <CtaHeadline />
@@ -201,6 +208,7 @@ function CtaFull() {
         href={buildCtaUrl()}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={() => trackCtaClick(location, "full")}
         className={`mt-7 ${CTA_BUTTON_CLASS}`}
       >
         Yes, I Want to Build a Tutoring Business
@@ -213,7 +221,7 @@ function CtaFull() {
   );
 }
 
-function CtaSlim() {
+function CtaSlim({ location }: { location: CtaLocation }) {
   return (
     <div className="text-center">
       <CtaHeadline />
@@ -222,11 +230,52 @@ function CtaSlim() {
         href={buildCtaUrl()}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={() => trackCtaClick(location, "slim")}
         className={`mt-6 ${CTA_BUTTON_CLASS}`}
       >
         Book In My Free 1:1 Roadmap Session
       </a>
     </div>
+  );
+}
+
+function CaseStudyCard({
+  study,
+}: {
+  study: { key: keyof typeof VIDEO_LINKS; name: string; transformation: string };
+}) {
+  const ref = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          trackCaseStudyView(study.key);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.5 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [study.key]);
+
+  return (
+    <article ref={ref} className="rounded-lg bg-white p-6 ring-1 ring-zinc-200">
+      <p className="text-base font-semibold text-yellow-600">{study.transformation}</p>
+      <h3 className="mt-2 font-display text-2xl font-bold text-black">{study.name}</h3>
+      <div className="relative mt-5 aspect-video overflow-hidden rounded-lg bg-black">
+        <iframe
+          src={normalizeEmbedUrl(VIDEO_LINKS[study.key])}
+          title={study.name}
+          className="h-full w-full"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+        />
+      </div>
+    </article>
   );
 }
 
@@ -264,7 +313,7 @@ export default function Training() {
           </div>
 
           <div className="mt-12">
-            <CtaFull />
+            <CtaFull location="hero" />
           </div>
         </div>
       </header>
@@ -307,7 +356,7 @@ export default function Training() {
             </div>
 
             <div className="mt-12">
-              <CtaSlim />
+              <CtaSlim location="help" />
             </div>
           </div>
         </section>
@@ -330,6 +379,9 @@ export default function Training() {
               {faqs.map((faq) => (
                 <details
                   key={faq.q}
+                  onToggle={(e) => {
+                    if (e.currentTarget.open) trackFaqOpen(faq.q);
+                  }}
                   className="group border-b border-zinc-200 [&_summary::-webkit-details-marker]:hidden"
                 >
                   <summary className="flex cursor-pointer list-none items-center justify-between gap-4 py-5 text-base text-zinc-800 sm:text-lg">
@@ -355,7 +407,7 @@ export default function Training() {
             </p>
 
             <div className="mt-12">
-              <CtaSlim />
+              <CtaSlim location="faq" />
             </div>
           </div>
         </section>
@@ -374,19 +426,7 @@ export default function Training() {
 
             <div className="mt-12 grid gap-6 md:grid-cols-2">
               {caseStudies.map((study) => (
-                <article key={study.key} className="rounded-lg bg-white p-6 ring-1 ring-zinc-200">
-                  <p className="text-base font-semibold text-yellow-600">{study.transformation}</p>
-                  <h3 className="mt-2 font-display text-2xl font-bold text-black">{study.name}</h3>
-                  <div className="relative mt-5 aspect-video overflow-hidden rounded-lg bg-black">
-                    <iframe
-                      src={normalizeEmbedUrl(VIDEO_LINKS[study.key])}
-                      title={study.name}
-                      className="h-full w-full"
-                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                      allowFullScreen
-                    />
-                  </div>
-                </article>
+                <CaseStudyCard key={study.key} study={study} />
               ))}
             </div>
 
@@ -395,7 +435,7 @@ export default function Training() {
             </p>
 
             <div className="mt-16">
-              <CtaSlim />
+              <CtaSlim location="case_studies" />
             </div>
           </div>
         </section>
@@ -412,6 +452,7 @@ export default function Training() {
             href="https://kst-marketing.com/policy/"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackOutboundClick("privacy_policy")}
             className="hover:text-yellow-600"
           >
             Privacy Policy

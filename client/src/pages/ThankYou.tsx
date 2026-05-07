@@ -2,6 +2,7 @@
 Design philosophy: Exact replica of the Client Ascension precall page structure, with KST Marketing gold branding replacing red accents. Maintains the original layout, typography hierarchy, video frame styling, FAQ grid, case studies, and proof section—but uses gold/yellow (#EAB308) instead of red (#DC2626).
 */
 import { useEffect, useRef, useState } from "react";
+import { trackOutboundClick } from "@/lib/analytics";
 import { Play } from "lucide-react";
 
 const HERO_THUMB = "https://d2xsxph8kpxj0f.cloudfront.net/310519663612998084/bzRRo8PuWrPWmxD9Qqyapo/precall-hero-ai-workflows-6b784JMa5H6cSzmSDomTs4.webp";
@@ -385,6 +386,7 @@ export default function ThankYou() {
             href="https://kst-marketing.com/policy/"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackOutboundClick("privacy_policy")}
             className="hover:text-yellow-600"
           >
             Privacy Policy

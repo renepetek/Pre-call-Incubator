@@ -4,6 +4,7 @@ This is a starting template — review with legal counsel before going live.
 Placeholders to fill in: governing-law jurisdiction, contact email.
 */
 import { useEffect } from "react";
+import { trackOutboundClick } from "@/lib/analytics";
 
 export default function Terms() {
   useEffect(() => {
@@ -204,6 +205,7 @@ export default function Terms() {
             href="https://kst-marketing.com/policy/"
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackOutboundClick("privacy_policy")}
             className="hover:text-yellow-600"
           >
             Privacy Policy
