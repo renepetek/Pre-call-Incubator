@@ -263,6 +263,10 @@ function VideoFrame({
 }
 
 export default function ThankYou() {
+  useEffect(() => {
+    document.title = "Next Steps";
+  }, []);
+
   return (
     <div className="min-h-screen bg-white text-black">
       {/* Hero Section */}

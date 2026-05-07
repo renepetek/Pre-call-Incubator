@@ -3,8 +3,13 @@ Original Terms & Conditions draft for the Educator Incubator Program.
 This is a starting template — review with legal counsel before going live.
 Placeholders to fill in: governing-law jurisdiction, contact email.
 */
+import { useEffect } from "react";
 
 export default function Terms() {
+  useEffect(() => {
+    document.title = "KST Marketing";
+  }, []);
+
   return (
     <div className="min-h-screen bg-white text-black">
       <header className="border-b border-zinc-200 px-5 py-6 sm:px-8">

@@ -231,6 +231,10 @@ function CtaSlim() {
 }
 
 export default function Training() {
+  useEffect(() => {
+    document.title = "KST Marketing";
+  }, []);
+
   return (
     <div className="min-h-screen bg-white text-black">
       {/* Hero / VSL Section */}
