@@ -24,7 +24,7 @@ const VIDEO_LINKS = {
 };
 
 const VIDALYTICS_ACCOUNT = "HjA51wM6";
-const HERO_EMBED_ID = "j2_UAtKIuFVBGLZc";
+const HERO_EMBED_ID = "UJyn3VkS8vtqIZxZ";
 
 const TYPEFORM_BASE_URL = "https://form.typeform.com/to/P3NkAZnu";
 const UTM_KEYS = [
