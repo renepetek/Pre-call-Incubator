@@ -170,7 +170,7 @@ function VidalyticsEmbed({ embedId, accountId }: { embedId: string; accountId: s
   }, [visible, accountId, divId]);
 
   return (
-    <div className="overflow-hidden rounded-lg border-4 border-yellow-500" ref={containerRef}>
+    <div className="overflow-hidden rounded-xl border-2 border-yellow-500" ref={containerRef}>
       <div id={divId} style={{ width: "100%", position: "relative", paddingTop: "56.25%" }} />
     </div>
   );
@@ -259,7 +259,7 @@ export default function Training() {
 
           <div className="mx-auto mt-6 h-1 w-32 bg-yellow-500" />
 
-          <div className="mx-auto mt-6 max-w-2xl overflow-hidden">
+          <div className="mx-auto mt-6 max-w-3xl overflow-hidden">
             <VidalyticsEmbed embedId={HERO_EMBED_ID} accountId={VIDALYTICS_ACCOUNT} />
           </div>
 
