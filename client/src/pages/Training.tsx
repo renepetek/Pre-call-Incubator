@@ -362,7 +362,7 @@ export default function Training() {
 
         {/* Case Studies Section */}
         <section className="bg-zinc-100 px-5 py-16 sm:px-8 sm:py-20">
-          <div className="mx-auto max-w-6xl">
+          <div className="mx-auto max-w-5xl">
             <h2 className="font-display text-3xl font-bold leading-[1.05] tracking-tight text-black sm:text-4xl md:text-5xl text-center">
               Our Case Studies
             </h2>
