@@ -238,7 +238,7 @@ export default function Training() {
   return (
     <div className="min-h-screen bg-white text-black">
       {/* Hero / VSL Section */}
-      <header className="border-b border-zinc-200 px-5 py-10 sm:px-8 sm:py-14">
+      <header className="border-b border-zinc-200 bg-gradient-to-br from-white via-yellow-50/60 to-white px-5 py-10 sm:px-8 sm:py-14">
         <div className="mx-auto max-w-3xl text-center">
           <div className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-wide">
             <span className="h-2.5 w-2.5 rounded-full bg-emerald-500" />
@@ -271,7 +271,7 @@ export default function Training() {
 
       <main>
         {/* How We Can Help Section */}
-        <section className="bg-zinc-100 px-5 py-16 sm:px-8 sm:py-20">
+        <section className="bg-gradient-to-tr from-zinc-50 via-yellow-50/50 to-zinc-100 px-5 py-16 sm:px-8 sm:py-20">
           <div className="mx-auto max-w-3xl">
             <h2 className="font-display text-2xl font-bold leading-[1.15] tracking-tight text-black sm:text-3xl md:text-4xl text-center">
               Here's How We Can Help You Inside the Educator Incubator Program
@@ -313,7 +313,7 @@ export default function Training() {
         </section>
 
         {/* FAQ Section */}
-        <section className="px-5 py-16 sm:px-8 sm:py-20">
+        <section className="bg-gradient-to-bl from-white via-yellow-50/60 to-white px-5 py-16 sm:px-8 sm:py-20">
           <div className="mx-auto max-w-3xl">
             <div className="flex justify-center">
               <span className="inline-flex items-center gap-2 rounded-full bg-black px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-white sm:text-xs">
@@ -361,7 +361,7 @@ export default function Training() {
         </section>
 
         {/* Case Studies Section */}
-        <section className="bg-zinc-100 px-5 py-16 sm:px-8 sm:py-20">
+        <section className="bg-gradient-to-tl from-zinc-50 via-yellow-50/50 to-zinc-100 px-5 py-16 sm:px-8 sm:py-20">
           <div className="mx-auto max-w-5xl">
             <h2 className="font-display text-3xl font-bold leading-[1.05] tracking-tight text-black sm:text-4xl md:text-5xl text-center">
               Our Case Studies
