@@ -319,8 +319,36 @@ export default function Training() {
       </header>
 
       <main>
+        {/* Case Studies Section */}
+        <section className="bg-gradient-to-tl from-zinc-50 via-yellow-50/50 to-zinc-100 px-5 py-16 sm:px-8 sm:py-20">
+          <div className="mx-auto max-w-5xl">
+            <h2 className="font-display text-3xl font-bold leading-[1.05] tracking-tight text-black sm:text-4xl md:text-5xl text-center">
+              Our Case Studies
+            </h2>
+            <div className="mx-auto mt-6 h-1 w-48 bg-yellow-500" />
+
+            <p className="mx-auto mt-8 max-w-2xl text-center text-lg font-semibold text-zinc-800">
+              We Give You Proven, Copy & Paste Tutoring Business Workflows You Can Use—Zero Technical Skills Required
+            </p>
+
+            <div className="mt-12 grid gap-6 md:grid-cols-2">
+              {caseStudies.map((study) => (
+                <CaseStudyCard key={study.key} study={study} />
+              ))}
+            </div>
+
+            <p className="mx-auto mt-10 max-w-3xl text-center text-lg text-zinc-900">
+              We have <strong>dozens more of these</strong>, with screenshots, full context, and the exact playbook each of them used.
+            </p>
+
+            <div className="mt-16">
+              <CtaSlim location="case_studies" />
+            </div>
+          </div>
+        </section>
+
         {/* How We Can Help Section */}
-        <section className="bg-gradient-to-tr from-zinc-50 via-yellow-50/50 to-zinc-100 px-5 py-16 sm:px-8 sm:py-20">
+        <section className="bg-gradient-to-bl from-white via-yellow-50/60 to-white px-5 py-16 sm:px-8 sm:py-20">
           <div className="mx-auto max-w-3xl">
             <h2 className="font-display text-2xl font-bold leading-[1.15] tracking-tight text-black sm:text-3xl md:text-4xl text-center">
               Here's How We Can Help You Inside the Educator Incubator Program
@@ -362,7 +390,7 @@ export default function Training() {
         </section>
 
         {/* FAQ Section */}
-        <section className="bg-gradient-to-bl from-white via-yellow-50/60 to-white px-5 py-16 sm:px-8 sm:py-20">
+        <section className="bg-gradient-to-tr from-zinc-50 via-yellow-50/50 to-zinc-100 px-5 py-16 sm:px-8 sm:py-20">
           <div className="mx-auto max-w-3xl">
             <div className="flex justify-center">
               <span className="inline-flex items-center gap-2 rounded-full bg-black px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-white sm:text-xs">
@@ -408,34 +436,6 @@ export default function Training() {
 
             <div className="mt-12">
               <CtaSlim location="faq" />
-            </div>
-          </div>
-        </section>
-
-        {/* Case Studies Section */}
-        <section className="bg-gradient-to-tl from-zinc-50 via-yellow-50/50 to-zinc-100 px-5 py-16 sm:px-8 sm:py-20">
-          <div className="mx-auto max-w-5xl">
-            <h2 className="font-display text-3xl font-bold leading-[1.05] tracking-tight text-black sm:text-4xl md:text-5xl text-center">
-              Our Case Studies
-            </h2>
-            <div className="mx-auto mt-6 h-1 w-48 bg-yellow-500" />
-
-            <p className="mx-auto mt-8 max-w-2xl text-center text-lg font-semibold text-zinc-800">
-              We Give You Proven, Copy & Paste Tutoring Business Workflows You Can Use—Zero Technical Skills Required
-            </p>
-
-            <div className="mt-12 grid gap-6 md:grid-cols-2">
-              {caseStudies.map((study) => (
-                <CaseStudyCard key={study.key} study={study} />
-              ))}
-            </div>
-
-            <p className="mx-auto mt-10 max-w-3xl text-center text-lg text-zinc-900">
-              We have <strong>dozens more of these</strong>, with screenshots, full context, and the exact playbook each of them used.
-            </p>
-
-            <div className="mt-16">
-              <CtaSlim location="case_studies" />
             </div>
           </div>
         </section>
