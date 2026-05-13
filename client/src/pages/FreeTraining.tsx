@@ -8,7 +8,7 @@ import { useLocation } from "wouter";
 import { trackOptinModalOpen, trackOptinSubmit } from "@/lib/analytics";
 
 const WEBHOOK_URL =
-  "https://services.leadconnectorhq.com/hooks/Ggt8JPH9NS98V7bXWPV0/webhook-trigger/a573ba37-3be5-457b-b0c3-028964514c92";
+  "https://services.leadconnectorhq.com/hooks/Ggt8JPH9NS98V7bXWPV0/webhook-trigger/4a628a32-92df-46c2-98e8-33387963894b";
 
 const UTM_KEYS = [
   "utm_source",
