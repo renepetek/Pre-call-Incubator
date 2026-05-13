@@ -14,14 +14,13 @@ import Training from "./pages/Training";
 function Router() {
   return (
     <Switch>
-      <Route path="/">{() => <Redirect to="/training" />}</Route>
+      <Route path="/">{() => <Redirect to="/free-training" />}</Route>
       <Route path="/free-training" component={FreeTraining} />
       <Route path="/training" component={Training} />
       <Route path="/thankyou" component={ThankYou} />
       <Route path="/terms" component={Terms} />
-      <Route path="/404" component={NotFound} />
-      {/* Final fallback route */}
-      <Route component={NotFound} />
+      {/* Anything else: send the visitor to the opt-in instead of a 404 */}
+      <Route>{() => <Redirect to="/free-training" />}</Route>
     </Switch>
   );
 }

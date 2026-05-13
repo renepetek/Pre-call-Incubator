@@ -32,7 +32,7 @@ function getUtmParams(): Record<string, string> {
 const learnItems = [
   {
     title: "The Online Tutoring Model",
-    body: "Why online tutoring is the highest-leverage one-person business right now — and how to position yours so you stand out in any subject or niche.",
+    body: "Why online tutoring is the highest-leverage one-person business right now, and how to position yours so you stand out in any subject or niche.",
   },
   {
     title: "The 3 High-Ticket Offers",
@@ -40,16 +40,28 @@ const learnItems = [
   },
   {
     title: "The Student Acquisition System",
-    body: "The outreach playbook our students use to sign new families every single week — without referrals and without spending money on ads.",
+    body: "The outreach playbook our students use to sign new families every single week, without referrals and without spending money on ads.",
   },
   {
     title: "The Retention Playbook",
-    body: "How to deliver results that keep parents paying month after month — and turn every student into a steady source of new referrals.",
+    body: "How to deliver results that keep parents paying month after month, and turn every student into a steady source of new referrals.",
   },
   {
     title: "The Path to Full-Time",
     body: "The step-by-step plan to scale beyond solo and replace your current income, so you can run this on your own terms from anywhere.",
   },
+];
+
+const proofImages = [
+  "/proof/sajib.png",
+  "/proof/fatima.png",
+  "/proof/mobin.png",
+  "/proof/kazi.png",
+  "/proof/hergis.png",
+  "/proof/kiaan.png",
+  "/proof/patrick.png",
+  "/proof/james.png",
+  "/proof/marta.png",
 ];
 
 const whoForItems = [
@@ -59,7 +71,7 @@ const whoForItems = [
   },
   {
     lead: "You want a high-leverage business",
-    rest: "where the systems do the heavy lifting — not just one more job dressed up to look like one.",
+    rest: "where the systems do the heavy lifting, not just one more job dressed up to look like one.",
   },
   {
     lead: "You value your time",
@@ -184,7 +196,7 @@ function OptInModal({ open, onClose, onSubmit, submitting }: OptInModalProps) {
             className="w-full rounded-lg border border-zinc-200 bg-zinc-50 px-4 py-3 text-base text-black placeholder:text-zinc-400 focus:border-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500/20 disabled:opacity-60"
           />
           <button type="submit" disabled={submitting} className={`w-full ${CTA_BUTTON_CLASS}`}>
-            {submitting ? "Submitting…" : "Access the Training"}
+            {submitting ? "Submitting..." : "Access the Training"}
           </button>
         </form>
 
@@ -246,14 +258,6 @@ export default function FreeTraining() {
 
   return (
     <div className="min-h-screen bg-white text-black">
-      <header className="border-b border-zinc-200 px-5 py-5 sm:px-8">
-        <div className="mx-auto max-w-5xl text-center">
-          <p className="font-display text-base font-bold uppercase tracking-[0.18em] text-black sm:text-lg">
-            KST <span className="text-yellow-500">Marketing</span>
-          </p>
-        </div>
-      </header>
-
       <main>
         {/* Hero */}
         <section className="bg-gradient-to-br from-white via-yellow-50/60 to-white px-5 py-16 sm:px-8 sm:py-20">
@@ -263,10 +267,10 @@ export default function FreeTraining() {
               Free Training
             </p>
             <h1 className="mt-5 font-display text-2xl font-bold leading-[1.1] tracking-tight text-black sm:text-3xl md:text-4xl">
-              How to Build a Profitable Online Tutoring Business — Without Tech Skills or Ad Spend
+              <span className="text-yellow-500">FREE TRAINING:</span> How to Sell Online Tutoring and Replace Your Full Time Income By Only Working 20-25 Hours Per Week
             </h1>
             <p className="mx-auto mt-5 max-w-xl text-base text-zinc-700 sm:text-lg">
-              The <span className="font-bold text-black">exact system</span> our students use to grow their tutoring business to $10k, $30k, even $50k per month — without quitting their day job to do it.
+              The <span className="font-bold text-black">exact system</span> our students use to grow their tutoring business to $10k, $30k, even $50k per month, without quitting their day job to do it.
             </p>
 
             <button onClick={openModal} className={`mt-9 ${CTA_BUTTON_CLASS}`}>
@@ -285,18 +289,60 @@ export default function FreeTraining() {
               </span>
             </div>
 
-            <div className="mx-auto mt-10 max-w-2xl space-y-4">
-              {learnItems.map((item) => (
+            <div className="relative mx-auto mt-10 max-w-2xl">
+              <div
+                aria-hidden
+                className="pointer-events-none absolute -inset-2 -z-10 rounded-3xl bg-gradient-to-br from-yellow-200/40 via-transparent to-yellow-200/30 blur-xl"
+              />
+              <div className="overflow-hidden rounded-2xl bg-white ring-1 ring-zinc-200 shadow-[0_20px_50px_-15px_rgba(234,179,8,0.25)]">
+                <div className="divide-y divide-zinc-200">
+                  {learnItems.map((item) => (
+                    <div key={item.title} className="flex items-start gap-4 p-5 sm:p-6">
+                      <span className="mt-0.5 flex-shrink-0 select-none text-2xl leading-none text-yellow-500">
+                        ◆
+                      </span>
+                      <p className="text-base text-zinc-800 sm:text-lg">
+                        <span className="font-bold text-black">{item.title}:</span>{" "}
+                        {item.body}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Recent Wins / Proof Screenshots */}
+        <section className="relative overflow-hidden bg-zinc-950 px-5 py-16 sm:px-8 sm:py-20">
+          <div
+            aria-hidden
+            className="pointer-events-none absolute inset-x-0 -top-32 mx-auto h-72 w-3/4 rounded-full bg-yellow-500/15 blur-3xl"
+          />
+          <div className="relative mx-auto max-w-5xl">
+            <div className="flex justify-center">
+              <span className="inline-flex items-center gap-2 rounded-full bg-white/10 px-4 py-1.5 text-[11px] font-bold uppercase tracking-[0.2em] text-white sm:text-xs">
+                <span className="h-1.5 w-1.5 rounded-full bg-yellow-500" />
+                Recent Wins
+              </span>
+            </div>
+            <h2 className="mt-6 text-center font-display text-2xl font-bold leading-[1.15] tracking-tight text-white sm:text-3xl md:text-4xl">
+              When You Follow the System, This Is What Happens
+            </h2>
+            <div className="mx-auto mt-6 h-1 w-32 bg-yellow-500" />
+
+            <div className="mt-10 columns-1 gap-4 sm:columns-2 lg:columns-3">
+              {proofImages.map((src) => (
                 <div
-                  key={item.title}
-                  className="flex items-start gap-4 rounded-xl bg-white p-5 ring-1 ring-zinc-200 sm:p-6"
+                  key={src}
+                  className="mb-4 overflow-hidden rounded-xl bg-white shadow-[0_10px_30px_-10px_rgba(0,0,0,0.4)] ring-1 ring-white/10"
                 >
-                  <span className="mt-0.5 flex-shrink-0 select-none text-2xl leading-none text-yellow-500">
-                    ◆
-                  </span>
-                  <p className="text-base text-zinc-800 sm:text-lg">
-                    <span className="font-bold text-black">{item.title}:</span> {item.body}
-                  </p>
+                  <img
+                    src={src}
+                    alt="Student win"
+                    loading="lazy"
+                    className="block w-full"
+                  />
                 </div>
               ))}
             </div>

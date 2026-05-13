@@ -1,5 +1,5 @@
 /*
-Design philosophy: Exact replica of the Client Ascension precall page structure, with KST Marketing gold branding replacing red accents. Maintains the original layout, typography hierarchy, video frame styling, FAQ grid, case studies, and proof section—but uses gold/yellow (#EAB308) instead of red (#DC2626).
+Design philosophy: Exact replica of the Client Ascension precall page structure, with KST Marketing gold branding replacing red accents. Maintains the original layout, typography hierarchy, video frame styling, FAQ grid, case studies, and proof section, but uses gold/yellow (#EAB308) instead of red (#DC2626).
 */
 import { useEffect, useRef, useState } from "react";
 import { trackOutboundClick } from "@/lib/analytics";
@@ -325,7 +325,7 @@ export default function ThankYou() {
             <div className="mx-auto mt-6 h-1 w-48 bg-yellow-500" />
 
             <p className="mx-auto mt-8 max-w-2xl text-center text-lg font-semibold text-zinc-800">
-              We Give You Proven, Copy & Paste AI Workflows You Can Sell to Businesses—Zero Technical Skills Required
+              We Give You Proven, Copy & Paste AI Workflows You Can Sell to Businesses. Zero Technical Skills Required.
             </p>
 
             <div className="mt-12 grid gap-6 md:grid-cols-2">

@@ -73,7 +73,7 @@ const faqs = [
   },
   {
     q: "How much time do I need to commit?",
-    a: "Most of our clients start while still working full-time and dedicate 1-2 hours per day to building the business in their first 90 days. The systems are designed to compound — you put more in early, then it scales.",
+    a: "Most of our clients start while still working full-time and dedicate 1-2 hours per day to building the business in their first 90 days. The systems are designed to compound. You put more in early, then it scales.",
   },
   {
     q: "What if I have no tech skills or business experience?",
@@ -85,7 +85,7 @@ const faqs = [
   },
   {
     q: "How is this different from other programs?",
-    a: "Most programs sell you a course and disappear. We work with you 1-on-1 — choosing your niche, refining your offer, and walking through every step of student acquisition. You're not buying information, you're buying access to a system and a team.",
+    a: "Most programs sell you a course and disappear. We work with you 1-on-1, choosing your niche, refining your offer, and walking through every step of student acquisition. You're not buying information, you're buying access to a system and a team.",
   },
 ];
 
@@ -328,7 +328,7 @@ export default function Training() {
             <div className="mx-auto mt-6 h-1 w-48 bg-yellow-500" />
 
             <p className="mx-auto mt-8 max-w-2xl text-center text-lg font-semibold text-zinc-800">
-              We Give You Proven, Copy & Paste Tutoring Business Workflows You Can Use—Zero Technical Skills Required
+              We Give You Proven, Copy & Paste Tutoring Business Workflows You Can Use. Zero Technical Skills Required.
             </p>
 
             <div className="mt-12 grid gap-6 md:grid-cols-2">

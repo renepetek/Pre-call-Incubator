@@ -1,6 +1,6 @@
 /*
 Original Terms & Conditions draft for the Educator Incubator Program.
-This is a starting template — review with legal counsel before going live.
+This is a starting template. Review with legal counsel before going live.
 Placeholders to fill in: governing-law jurisdiction, contact email.
 */
 import { useEffect } from "react";
@@ -40,8 +40,8 @@ export default function Terms() {
               1. Acceptance of Terms
             </h2>
             <p className="mt-3">
-              By accessing this site or enrolling in any KST Marketing offering — including
-              the Educator Incubator Program — you agree to be bound by these Terms and
+              By accessing this site or enrolling in any KST Marketing offering, including
+              the Educator Incubator Program, you agree to be bound by these Terms and
               Conditions. If you do not agree, please do not use our services.
             </p>
           </section>
@@ -98,8 +98,8 @@ export default function Terms() {
               6. Intellectual Property
             </h2>
             <p className="mt-3">
-              All program materials — including videos, documents, scripts, templates, and
-              standard operating procedures — are the intellectual property of KST
+              All program materials, including videos, documents, scripts, templates, and
+              standard operating procedures, are the intellectual property of KST
               Marketing and are licensed solely for your personal use within the program.
               Reproduction, redistribution, resale, or sharing of materials with non-members
               is prohibited without our prior written permission.
@@ -149,8 +149,8 @@ export default function Terms() {
             </h2>
             <p className="mt-3">
               We may suspend or terminate your access to the program for material breach of
-              these Terms — including misuse of materials, abusive conduct toward staff or
-              other members, or non-payment — without refund.
+              these Terms, including misuse of materials, abusive conduct toward staff or
+              other members, or non-payment, without refund.
             </p>
           </section>
 
