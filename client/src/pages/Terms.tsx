@@ -16,12 +16,12 @@ export default function Terms() {
       <header className="border-b border-zinc-200 px-5 py-6 sm:px-8">
         <div className="mx-auto flex max-w-3xl items-center justify-between">
           <a
-            href="/training"
+            href="/"
             className="font-display text-base font-bold uppercase tracking-[0.16em] text-black sm:text-lg"
           >
             KST <span className="text-yellow-500">Marketing</span>
           </a>
-          <a href="/training" className="text-sm text-zinc-600 hover:text-zinc-900">
+          <a href="/" className="text-sm text-zinc-600 hover:text-zinc-900">
             Back to site
           </a>
         </div>
