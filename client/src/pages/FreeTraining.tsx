@@ -52,26 +52,26 @@ const learnItems = [
   },
 ];
 
-// Order is chosen so tall and short screenshots interleave evenly across
-// the 3-column masonry. CSS columns balances by content height, so spreading
-// the heavy Discord/chat screenshots through the sequence keeps the columns
-// closer in length.
+// Order picked via a greedy bin-pack against image file sizes (proxy for
+// rendered height) so each of the 3 masonry columns sums to roughly the
+// same height. Heaviest tile first anchors column 1; subsequent tiles
+// fall into the next column when the current one passes ~target height.
 const proofImages = [
-  "/proof/sajib.png",
-  "/proof/james.png",
-  "/proof/mario.png",
-  "/proof/ibrahim.png",
-  "/proof/kazi.png",
   "/proof/hergis.png",
-  "/proof/thomas.png",
   "/proof/william.png",
-  "/proof/kyra.png",
   "/proof/mobin.png",
-  "/proof/kiaan.png",
-  "/proof/usman.png",
+  "/proof/ibrahim.png",
+  "/proof/thomas.png",
+  "/proof/kazi.png",
   "/proof/andrewm.png",
-  "/proof/marta.png",
+  "/proof/mario.png",
+  "/proof/usman.png",
+  "/proof/kiaan.png",
+  "/proof/sajib.png",
   "/proof/fatima.png",
+  "/proof/marta.png",
+  "/proof/james.png",
+  "/proof/kyra.png",
 ];
 
 const whoForItems = [
