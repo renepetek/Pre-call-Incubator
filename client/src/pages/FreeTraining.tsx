@@ -52,22 +52,26 @@ const learnItems = [
   },
 ];
 
+// Order is chosen so tall and short screenshots interleave evenly across
+// the 3-column masonry. CSS columns balances by content height, so spreading
+// the heavy Discord/chat screenshots through the sequence keeps the columns
+// closer in length.
 const proofImages = [
   "/proof/sajib.png",
-  "/proof/fatima.png",
-  "/proof/mobin.png",
+  "/proof/james.png",
+  "/proof/mario.png",
+  "/proof/ibrahim.png",
   "/proof/kazi.png",
   "/proof/hergis.png",
-  "/proof/kiaan.png",
-  "/proof/ibrahim.png",
-  "/proof/james.png",
-  "/proof/marta.png",
-  "/proof/mario.png",
   "/proof/thomas.png",
-  "/proof/andrewm.png",
-  "/proof/usman.png",
-  "/proof/kyra.png",
   "/proof/william.png",
+  "/proof/kyra.png",
+  "/proof/mobin.png",
+  "/proof/kiaan.png",
+  "/proof/usman.png",
+  "/proof/andrewm.png",
+  "/proof/marta.png",
+  "/proof/fatima.png",
 ];
 
 const whoForItems = [
