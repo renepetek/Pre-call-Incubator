@@ -5,6 +5,7 @@ import { Analytics } from "@vercel/analytics/react";
 import { Redirect, Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import FreeTraining from "./pages/FreeTraining";
 import Terms from "./pages/Terms";
 import ThankYou from "./pages/ThankYou";
 import Training from "./pages/Training";
@@ -14,6 +15,7 @@ function Router() {
   return (
     <Switch>
       <Route path="/">{() => <Redirect to="/training" />}</Route>
+      <Route path="/free-training" component={FreeTraining} />
       <Route path="/training" component={Training} />
       <Route path="/thankyou" component={ThankYou} />
       <Route path="/terms" component={Terms} />

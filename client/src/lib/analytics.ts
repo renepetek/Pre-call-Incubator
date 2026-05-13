@@ -18,3 +18,11 @@ export function trackCaseStudyView(caseStudy: string) {
 export function trackOutboundClick(link: string) {
   track("outbound_click", { link });
 }
+
+export function trackOptinModalOpen() {
+  track("optin_modal_open", { source: "free-training" });
+}
+
+export function trackOptinSubmit() {
+  track("optin_submit", { source: "free-training" });
+}
