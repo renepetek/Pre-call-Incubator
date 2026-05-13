@@ -11,6 +11,7 @@ import {
   trackOutboundClick,
   type CtaLocation,
 } from "@/lib/analytics";
+import { trackPixelLead } from "@/lib/pixel";
 
 const VIDEO_LINKS = {
   sajib: "https://www.youtube.com/watch?v=Wpvz6uusSZY",
@@ -282,6 +283,7 @@ function CaseStudyCard({
 export default function Training() {
   useEffect(() => {
     document.title = "KST Marketing";
+    trackPixelLead();
   }, []);
 
   return (
