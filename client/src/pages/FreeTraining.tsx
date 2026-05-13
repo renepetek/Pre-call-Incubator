@@ -59,9 +59,10 @@ const proofImages = [
   "/proof/kazi.png",
   "/proof/hergis.png",
   "/proof/kiaan.png",
-  "/proof/patrick.png",
+  "/proof/ibrahim.png",
   "/proof/james.png",
   "/proof/marta.png",
+  "/proof/namerah.png",
 ];
 
 const whoForItems = [
