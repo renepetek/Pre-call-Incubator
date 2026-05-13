@@ -65,6 +65,8 @@ const proofImages = [
   "/proof/mario.png",
   "/proof/jared.png",
   "/proof/andrewm.png",
+  "/proof/usman.png",
+  "/proof/kyra.png",
 ];
 
 const whoForItems = [
