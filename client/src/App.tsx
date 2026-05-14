@@ -43,6 +43,18 @@ function PixelRouteTracker() {
   return null;
 }
 
+// Wouter doesn't reset scroll position on SPA navigation; without this, a
+// visitor who scrolls to a CTA at the bottom of /free-training and submits
+// the opt-in form lands on /training at the same scroll offset. Snap to top
+// on every route change.
+function ScrollToTop() {
+  const [location] = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]);
+  return null;
+}
+
 // NOTE: About Theme
 // - First choose a default theme according to your design style (dark or light bg), than change color palette in index.css
 //   to keep consistent foreground/background color across components
@@ -57,6 +69,7 @@ function App() {
       >
         <TooltipProvider>
           <Toaster />
+          <ScrollToTop />
           <PixelRouteTracker />
           <Router />
           <Analytics />

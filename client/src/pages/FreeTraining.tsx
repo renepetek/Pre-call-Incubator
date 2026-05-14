@@ -4,6 +4,8 @@ data goes to the LeadConnector webhook, then they're redirected to /training
 where the actual VSL lives.
 */
 import { useEffect, useRef, useState } from "react";
+import PhoneInput from "react-phone-number-input";
+import "react-phone-number-input/style.css";
 import { useLocation } from "wouter";
 import { trackOptinModalOpen, trackOptinSubmit } from "@/lib/analytics";
 
@@ -105,6 +107,7 @@ interface OptInModalProps {
 
 function OptInModal({ open, onClose, onSubmit, submitting }: OptInModalProps) {
   const firstInputRef = useRef<HTMLInputElement>(null);
+  const [phone, setPhone] = useState("");
 
   useEffect(() => {
     if (!open) return;
@@ -133,7 +136,6 @@ function OptInModal({ open, onClose, onSubmit, submitting }: OptInModalProps) {
     const form = e.currentTarget;
     const fullName = (form.elements.namedItem("fullName") as HTMLInputElement).value.trim();
     const email = (form.elements.namedItem("email") as HTMLInputElement).value.trim();
-    const phone = (form.elements.namedItem("phone") as HTMLInputElement).value.trim();
     if (!fullName || !email || !phone) return;
     onSubmit({ fullName, email, phone });
   }
@@ -196,14 +198,14 @@ function OptInModal({ open, onClose, onSubmit, submitting }: OptInModalProps) {
             disabled={submitting}
             className="w-full rounded-lg border border-zinc-200 bg-zinc-50 px-4 py-3 text-base text-black placeholder:text-zinc-400 focus:border-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500/20 disabled:opacity-60"
           />
-          <input
-            name="phone"
-            type="tel"
-            required
-            placeholder="Your Phone Number"
-            autoComplete="tel"
+          <PhoneInput
+            international
+            defaultCountry="US"
+            value={phone}
+            onChange={(value) => setPhone(value ?? "")}
             disabled={submitting}
-            className="w-full rounded-lg border border-zinc-200 bg-zinc-50 px-4 py-3 text-base text-black placeholder:text-zinc-400 focus:border-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500/20 disabled:opacity-60"
+            placeholder="Your Phone Number"
+            className="kst-phone-input"
           />
           <button type="submit" disabled={submitting} className={`w-full ${CTA_BUTTON_CLASS}`}>
             {submitting ? "Submitting..." : "Access the Training"}
