@@ -182,4 +182,39 @@ Design philosophy: Exact replica of Client Ascension precall page with KST Marke
       max-width: 1280px;
     }
   }
+
+  /* react-phone-number-input override so the picker matches the
+     KST opt-in form inputs (bg-zinc-50, border-zinc-200, focus
+     ring yellow-500). */
+  .kst-phone-input.PhoneInput {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    background: rgb(250 250 250);
+    border: 1px solid rgb(228 228 231);
+    border-radius: 0.5rem;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .kst-phone-input.PhoneInput:focus-within {
+    border-color: rgb(234 179 8);
+    box-shadow: 0 0 0 2px rgb(234 179 8 / 0.2);
+  }
+  .kst-phone-input.PhoneInput .PhoneInputInput {
+    flex: 1;
+    min-width: 0;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    color: black;
+    padding: 0;
+  }
+  .kst-phone-input.PhoneInput .PhoneInputInput::placeholder {
+    color: rgb(161 161 170);
+  }
+  .kst-phone-input.PhoneInput .PhoneInputCountrySelectArrow {
+    color: rgb(82 82 91);
+    opacity: 0.6;
+  }
 }
