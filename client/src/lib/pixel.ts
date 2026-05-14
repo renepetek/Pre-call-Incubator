@@ -14,8 +14,3 @@ export function trackPixelPageView() {
   if (typeof window === "undefined") return;
   window.fbq?.("track", "PageView");
 }
-
-export function trackPixelLead() {
-  if (typeof window === "undefined") return;
-  window.fbq?.("track", "Lead");
-}
