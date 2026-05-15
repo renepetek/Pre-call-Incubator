@@ -4,7 +4,10 @@ data goes to the LeadConnector webhook, then they're redirected to /training
 where the actual VSL lives.
 */
 import { useEffect, useRef, useState } from "react";
-import PhoneInput from "react-phone-number-input";
+import PhoneInput, {
+  isValidPhoneNumber,
+  parsePhoneNumber,
+} from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { useLocation } from "wouter";
 import { trackOptinModalOpen, trackOptinSubmit } from "@/lib/analytics";
@@ -108,6 +111,7 @@ interface OptInModalProps {
 function OptInModal({ open, onClose, onSubmit, submitting }: OptInModalProps) {
   const firstInputRef = useRef<HTMLInputElement>(null);
   const [phone, setPhone] = useState("");
+  const [phoneError, setPhoneError] = useState("");
 
   useEffect(() => {
     if (!open) return;
@@ -137,6 +141,13 @@ function OptInModal({ open, onClose, onSubmit, submitting }: OptInModalProps) {
     const fullName = (form.elements.namedItem("fullName") as HTMLInputElement).value.trim();
     const email = (form.elements.namedItem("email") as HTMLInputElement).value.trim();
     if (!fullName || !email || !phone) return;
+    // Reject malformed numbers before they ever leave the browser.
+    // isValidPhoneNumber checks length + format for the detected country.
+    if (!isValidPhoneNumber(phone)) {
+      setPhoneError("Please enter a valid phone number for the selected country.");
+      return;
+    }
+    setPhoneError("");
     onSubmit({ fullName, email, phone });
   }
 
@@ -198,15 +209,23 @@ function OptInModal({ open, onClose, onSubmit, submitting }: OptInModalProps) {
             disabled={submitting}
             className="w-full rounded-lg border border-zinc-200 bg-zinc-50 px-4 py-3 text-base text-black placeholder:text-zinc-400 focus:border-yellow-500 focus:outline-none focus:ring-2 focus:ring-yellow-500/20 disabled:opacity-60"
           />
-          <PhoneInput
-            international
-            defaultCountry="US"
-            value={phone}
-            onChange={(value) => setPhone(value ?? "")}
-            disabled={submitting}
-            placeholder="Your Phone Number"
-            className="kst-phone-input"
-          />
+          <div>
+            <PhoneInput
+              international
+              defaultCountry="US"
+              value={phone}
+              onChange={(value) => {
+                setPhone(value ?? "");
+                if (phoneError) setPhoneError("");
+              }}
+              disabled={submitting}
+              placeholder="Your Phone Number"
+              className="kst-phone-input"
+            />
+            {phoneError && (
+              <p className="mt-1.5 text-xs text-red-600">{phoneError}</p>
+            )}
+          </div>
           <button type="submit" disabled={submitting} className={`w-full ${CTA_BUTTON_CLASS}`}>
             {submitting ? "Submitting..." : "Access the Training"}
           </button>
@@ -243,6 +262,13 @@ export default function FreeTraining() {
     const firstName = parts[0] ?? "";
     const lastName = parts.slice(1).join(" ");
 
+    // Pull country info off the E.164 number so GHL doesn't fall back
+    // to the location's default country (which was tagging every lead
+    // as Slovenia).
+    const parsed = phone ? parsePhoneNumber(phone) : undefined;
+    const country = parsed?.country;
+    const countryCallingCode = parsed?.countryCallingCode;
+
     try {
       await fetch(WEBHOOK_URL, {
         method: "POST",
@@ -253,6 +279,8 @@ export default function FreeTraining() {
           lastName,
           email,
           phone,
+          country,
+          countryCallingCode,
           ...utms,
           source: "free-training",
         }),
