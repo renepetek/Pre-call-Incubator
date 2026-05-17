@@ -281,6 +281,11 @@ export default function FreeTraining() {
           phone,
           country,
           countryCallingCode,
+          // UTMs sent under two naming conventions so GHL custom
+          // fields named either "Campaign" or "utm_campaign" both fill.
+          campaign: utms.utm_campaign,
+          medium: utms.utm_medium,
+          content: utms.utm_content,
           ...utms,
           source: "free-training",
         }),
